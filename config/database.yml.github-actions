@@ -1,0 +1,8 @@
+test:
+  adapter: mysql2
+  encoding: utf8mb4
+  database: github-actions-sample_test
+  url: <%= ENV['DATABASE_URL'] %>
+  host: 127.0.0.1
+  username: root
+  password: root
