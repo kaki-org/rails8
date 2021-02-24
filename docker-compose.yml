@@ -24,7 +24,7 @@ services:
     command: ["bin/rails", "server", "-b", "0.0.0.0"]
     expose: ["3000"]
     ports:
-      - "${WEB_PORT:-33000}:3000"
+      - "${WEB_PORT:-53000}:3000"
     working_dir: /app
     user: root
 
@@ -48,7 +48,7 @@ services:
   redis:
     image: "redis:5-alpine"
     ports:
-      - "6379:6379"
+      - "56379:6379"
 
   worker:
     <<: *web
@@ -58,7 +58,7 @@ services:
       REDIS_URL: redis://redis:6379
     command: bundle exec sidekiq -C config/sidekiq.yml
     ports:
-      - "3035:3035"
+      - "53035:3035"
 
 volumes:
   bundle:
