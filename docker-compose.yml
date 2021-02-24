@@ -1,0 +1,66 @@
+version: '3.7'
+
+services:
+  web: &web
+    image: circleci/ruby:2.7.2-node-browsers
+    tmpfs:
+      - /tmp
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/app:cached
+      - rails_cache:/app/tmp/cache
+      - bundle:/usr/local/bundle
+    environment:
+      BOOTSNAP_CACHE_DIR: '/usr/local/bundle'
+      HISTFILE: '/app/log/.bash_history'
+      TZ: 'Asia/Tokyo'
+      RAILS_ENV: ${RAILS_ENV:-development}
+      DATABASE_URL: 'mysql2://root:@db'
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      - db
+      - redis
+    command: ["bin/rails", "server", "-b", "0.0.0.0"]
+    expose: ["3000"]
+    ports:
+      - "${WEB_PORT:-33000}:3000"
+    working_dir: /app
+    user: root
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      TZ: Asia/Tokyo
+    volumes:
+      - db:/var/lib/mysql
+    ports:
+      - "53306:3306"
+
+  rails_cred:
+    image: medpeer/rails_cred
+    environment:
+      RAILS_MASTER_KEY:
+    volumes:
+      - ./config/credentials:/app/config/credentials:cached
+
+  redis:
+    image: "redis:5-alpine"
+    ports:
+      - "6379:6379"
+
+  worker:
+    <<: *web
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_URL: redis://redis:6379
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    ports:
+      - "3035:3035"
+
+volumes:
+  bundle:
+  rails_cache:
+  db:
