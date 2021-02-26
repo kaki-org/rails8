@@ -9,14 +9,12 @@ jobs:
     runs-on: ubuntu-18.04
 
     services:
-      postgres:
-        image: postgres:11.2-alpine
+      mysql:
+        image: mysql:5.7
         ports:
-          - 5432:5432
+          - 3306:3306
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+          MYSQL_ROOT_PASSWORD: root
 
     # https://github.com/ruby/setup-ruby
     steps:
@@ -28,8 +26,8 @@ jobs:
           ruby-version: 2.7.2
 
       #MySQLをインストール
-      #- name: Install dependent libralies
-      #  run: sudo apt-get install libmysqlclient-dev
+      - name: Install dependent libralies
+        run: sudo apt-get install libmysqlclient-dev
 
       - name: Setup bundler
         run: gem install bundler
