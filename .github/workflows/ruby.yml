@@ -1,0 +1,71 @@
+name: Build
+
+#プルリクエスト作成時に実行(他にもpush時など設定できます)
+on: [ pull_request ]
+
+jobs:
+  setup_and_test_execution:
+    #ubuntu環境で動かします
+    runs-on: ubuntu-18.04
+
+    services:
+      mysql:
+        image: mysql:5.7
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: root
+
+    # https://github.com/ruby/setup-ruby
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Ruby version
+        uses: actions/setup-ruby@master
+        with:
+          ruby-version: 2.7.2
+
+      #MySQLをインストール
+      - name: Install dependent libralies
+        run: sudo apt-get install libmysqlclient-dev
+
+      - name: Setup bundler
+        run: gem install bundler
+
+      - name: Cache gems
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: bundle install
+        run: |
+          bundle install --jobs 4 --retry 3 --path vendor/bundle
+      - name: yarn install
+        run: yarn install --check-files
+
+      - name: Setup Database
+        run: |
+          cp config/database.yml.github-actions config/database.yml
+          bundle exec rake db:create
+          bundle exec rake db:migrate
+          bundle exec rake db:schema:load
+        env:
+          RAILS_ENV: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+
+      - name: Run RSpec
+        run: bundle exec rspec
+        env:
+          RAILS_ENV: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
