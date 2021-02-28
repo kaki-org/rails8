@@ -22,5 +22,6 @@ vendor/"
 
 for i in $RAILS_LIST
 do
-    echo $i
+    echo "remove recursively" $i
+    rm -rf $i
 done
