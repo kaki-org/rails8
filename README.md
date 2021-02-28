@@ -18,3 +18,5 @@ bundleを実行して、rails newする。
 dip bundle
 dip rails new .
 ```
+
+# 色々やろうぜ
