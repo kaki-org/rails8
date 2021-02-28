@@ -3,16 +3,12 @@
 # `rails new` する前の状態に戻すスクリプト。純粋に削除をするだけ
 RAILS_LIST="Rakefile
 app/
-babel.config.js
 bin/
 config/
 config.ru
 db/
 lib/
 log/
-node_modules/
-package.json
-postcss.config.js
 public/
 spec/
 storage/
@@ -25,3 +21,5 @@ do
     echo "remove recursively" $i
     rm -rf $i
 done
+#dip bash -c "rails new  . --skip-action-mailer --skip-action-mailbox --skip-action-text --skip-storage --skip-action-cable"
+

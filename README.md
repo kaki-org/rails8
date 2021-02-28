@@ -20,3 +20,6 @@ dip rails new .
 ```
 
 # 色々やろうぜ
+
+`cleanup.sh`を実行する事で`rails new`して出来たファイル群を作成し、新たに`rails new`を実行する事ができる。
+
