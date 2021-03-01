@@ -21,5 +21,7 @@ do
     echo "remove recursively" $i
     rm -rf $i
 done
-#dip bash -c "rails new  . --skip-action-mailer --skip-action-mailbox --skip-action-text --skip-storage --skip-action-cable"
+# TODOアプリの作成
+dip bash -c "rails new . --skip-action-mailer --skip-action-mailbox --skip-action-text --skip-storage --skip-action-cable"
+cp database.yml.github-actions config
 

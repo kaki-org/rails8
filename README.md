@@ -23,3 +23,7 @@ dip rails new .
 
 `cleanup.sh`を実行する事で`rails new`して出来たファイル群を作成し、新たに`rails new`を実行する事ができる。
 
+# routingを確認する
+
+知らなかったけど、以下でさくっとルーティング情報がわかるみたい。
+http://localhost:53000/rails/info/routes
