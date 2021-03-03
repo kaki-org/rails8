@@ -39,4 +39,15 @@ class Book < ApplicationRecord
   def high_price?
     price >= 5000
   end
+
+  # ActiveRecord::Enumを利用してみる(今はenumerize gemがいいかもしれない)
+  # RESERVATION = 0  #予約受付
+  # NOW_ON_SALE = 1  #発売中
+  # END_OF_PRINT = 2 #販売終了
+  # SALES_STATUS = [RESERVATION, NOW_ON_SALE, END_OF_PRINT]
+  enum sales_status: {
+    reservation: 0, #予約受け付け
+    now_on_sale: 1, #発売中
+    end_of_print: 2, #販売終了
+  }
 end
