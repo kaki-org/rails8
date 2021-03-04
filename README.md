@@ -26,4 +26,4 @@ dip rails new .
 # routingを確認する
 
 知らなかったけど、以下でさくっとルーティング情報がわかるみたい。
-http://localhost:53000/rails/info/routes
+http://rails6.lvh.me:53000/rails/info/routes
