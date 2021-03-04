@@ -5,7 +5,6 @@ class BooksController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.plain { render plain: 'OK' }
       format.json { render json: @book }
     end
   end
