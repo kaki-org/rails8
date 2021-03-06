@@ -14,7 +14,7 @@ class EntriesTest < ApplicationSystemTestCase
     visit entries_url
     click_on "New Entry"
 
-    fill_in "Blog.references", with: @entry.blog.references
+    fill_in "Blog", with: @entry.blog_id
     fill_in "Body", with: @entry.body
     fill_in "Title", with: @entry.title
     click_on "Create Entry"
@@ -27,7 +27,7 @@ class EntriesTest < ApplicationSystemTestCase
     visit entries_url
     click_on "Edit", match: :first
 
-    fill_in "Blog.references", with: @entry.blog.references
+    fill_in "Blog", with: @entry.blog_id
     fill_in "Body", with: @entry.body
     fill_in "Title", with: @entry.title
     click_on "Update Entry"

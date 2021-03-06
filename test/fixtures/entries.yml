@@ -3,9 +3,9 @@
 one:
   title: MyString
   body: MyText
-  blog.references: MyString
+  blog: one
 
 two:
   title: MyString
   body: MyText
-  blog.references: MyString
+  blog: two
