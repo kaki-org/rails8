@@ -22,6 +22,6 @@ do
     rm -rf $i
 done
 # TODOアプリの作成
-dip bash -c "rails new . --skip-action-mailer --skip-action-mailbox --skip-action-text --skip-storage --skip-action-cable"
+dip bash -c "rails new . --database mysql"
 cp database.yml.github-actions config
 
