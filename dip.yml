@@ -29,6 +29,11 @@ interaction:
       RAILS_ENV: test
     command: bundle exec rspec
 
+  yarn:
+    description: Run yarn
+    service: web
+    command: yarn
+
   rubocop:
     description: Run rubocop
     service: web

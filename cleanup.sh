@@ -21,7 +21,7 @@ do
     echo "remove recursively" $i
     rm -rf $i
 done
-# TODOアプリの作成
+# webpackerアプリの作成
 dip bash -c "rails new . --database mysql"
 cp database.yml.github-actions config
 
