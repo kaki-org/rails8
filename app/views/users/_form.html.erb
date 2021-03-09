@@ -17,6 +17,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit data: { confirm: '実行してもよろしいですか？', disable_with: '送信中'} %>
   </div>
 <% end %>
