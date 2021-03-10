@@ -23,3 +23,5 @@ document.addEventListener("turbolinks:click", function(){
 document.addEventListener("turbolinks:request-start", function(){
     console.log("turbolinks:request-start fire")
 })
+
+import "controllers"
