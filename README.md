@@ -70,3 +70,7 @@ h2oを起動する
 ```bash
 % h2o -c /Users/teruo.kakikubo/brew/etc/h2o/h2o.conf
 ```
+
+# Sidekiqを利用する
+
+http://rails6.lvh.me:53000/sidekiq
