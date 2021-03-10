@@ -1,1 +1,1 @@
-alert("hello webpack packman")
+// alert("hello webpack packman")

@@ -13,3 +13,13 @@ const $ = require("jquery")
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener("turbolinks:load", function(){
+    console.log("turbolinks:load fire")
+})
+document.addEventListener("turbolinks:click", function(){
+    console.log("turbolinks:click fire")
+})
+document.addEventListener("turbolinks:request-start", function(){
+    console.log("turbolinks:request-start fire")
+})
