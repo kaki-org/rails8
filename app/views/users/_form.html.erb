@@ -1,4 +1,4 @@
-<%= form_with(model: user, local: false) do |form| %>
+<%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -16,7 +16,12 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="field">
+    <%= form.label :portrait %>
+    <%= form.file_field :portrait, direct_upload: true %>
+  </div>
+
   <div class="actions">
-    <%= form.submit data: { confirm: '実行してもよろしいですか？', disable_with: '送信中'} %>
+    <%= form.submit %>
   </div>
 <% end %>

@@ -5,5 +5,11 @@
   <%= @user.name %>
 </p>
 
+<p>
+  <strong>Portrait:</strong>
+  <%= link_to @user.portrait.filename, @user.portrait if @user.portrait.attached? %>
+  <%= image_tag @user.portrait.variant(resize_to_limit: [100, 100]) if @user.portrait.attached? %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
