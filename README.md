@@ -74,3 +74,35 @@ h2oを起動する
 # Sidekiqを利用する
 
 http://rails6.lvh.me:53000/sidekiq
+
+ちょっと謎な動き。
+
+```
+irb(main):007:0> AsyncLogJob.perform_later(message: '44')
+irb(main):002:0> AsyncLog.last
+  AsyncLog Load (0.7ms)  SELECT `async_logs`.* FROM `async_logs` ORDER BY `async_logs`.`id` DESC LIMIT 1
+=> #<AsyncLog id: 14, message: "bbb", created_at: "2021-03-12 21:04:08.776910000 +0000", updated_at: "2021-03-12 21:04:08.776910000 +0000">
+```
+
+`sidekiq`を起動してない状態だと上記のようにperform_laterが処理されず、
+キューに溜まったままの状態になるのだが、これを別ターミナルで
+
+```
+dip bundle exec sidekiq
+```
+
+とすると
+```
+irb(main):008:0> AsyncLog.last
+  AsyncLog Load (1.0ms)  SELECT `async_logs`.* FROM `async_logs` ORDER BY `async_logs`.`id` DESC LIMIT 1
+=> #<AsyncLog id: 15, message: "44", created_at: "2021-03-15 21:07:55.098130000 +0000", updated_at: "2021-03-15 21:07:55.098130000 +0000">
+```
+
+きちんと処理され、
+
+```
+dip up worker
+```
+
+とすると、perform_laterで`sidekiq`を起動しても何も処理されない。
+どういう事だろうか。。。
