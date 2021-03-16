@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_15_225716) do
+ActiveRecord::Schema.define(version: 2021_03_16_213819) do
 
   create_table "action_mailbox_inbound_emails", charset: "utf8mb4", force: :cascade do |t|
     t.integer "status", default: 0, null: false
@@ -93,6 +93,12 @@ ActiveRecord::Schema.define(version: 2021_03_15_225716) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["blog_id"], name: "index_entries_on_blog_id"
+  end
+
+  create_table "message2s", charset: "utf8mb4", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "messages", charset: "utf8mb4", force: :cascade do |t|

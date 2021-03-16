@@ -27,6 +27,20 @@ services:
       - "${WEB_PORT:-53000}:3000"
     working_dir: /app
     user: root
+  webpack:
+    <<: *web
+    command: /bin/sh -c "docker/wait-for-it.sh web:3000 --timeout=600 && bundle install && yarn install --check-files && bin/webpack-dev-server"
+    environment:
+      NODE_ENV: ${RAILS_ENV:-development}
+      RAILS_ENV: ${RAILS_ENV:-development}
+      BUNDLE_APP_CONFIG: ./.bundle
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    ports:
+      - ${WEBPACK_PORT:-53035}:3035
+    tty: true
+    stdin_open: true
+    depends_on:
+      - web
 
   db:
     image: mysql:5.7
