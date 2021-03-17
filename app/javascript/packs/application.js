@@ -6,25 +6,7 @@
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
-import "channels"
-const $ = require("jquery")
-// $(() => $("body").html("hello jquery2"))
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-document.addEventListener("turbolinks:load", function(){
-    console.log("turbolinks:load fire")
-})
-document.addEventListener("turbolinks:click", function(){
-    console.log("turbolinks:click fire")
-})
-document.addEventListener("turbolinks:request-start", function(){
-    console.log("turbolinks:request-start fire")
-})
-
-import "controllers"
-
-require("trix")
-require("@rails/actiontext")

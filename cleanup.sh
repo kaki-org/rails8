@@ -22,6 +22,6 @@ do
     rm -rf $i
 done
 # webpackerアプリの作成
-dip bash -c "rails new . --database mysql"
+dip bash -c "rails new . --database mysql --skip-action-mailer --skip-action-mailbox --skip-action-text --skip-action-cable"
 cp database.yml.github-actions config
 
