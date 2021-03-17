@@ -15,16 +15,11 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
-  url: <%= ENV['DATABASE_URL'] %>
+  host: localhost
 
 development:
-  primary:
-    <<: *default
-    database: app_development
-  sub:
-    <<: *default
-    database: app_development_sub
-    migrations_paths: db/sub_migrate
+  <<: *default
+  database: app_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
