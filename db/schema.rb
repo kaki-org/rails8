@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(version: 2021_03_18_234159) do
   end
 
   create_table "tickets", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.bigint "event_id", null: false
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_id"], name: "index_tickets_on_event_id"
+    t.index ["event_id", "user_id"], name: "index_tickets_on_event_id_and_user_id", unique: true
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
@@ -45,5 +45,4 @@ ActiveRecord::Schema.define(version: 2021_03_18_234159) do
   end
 
   add_foreign_key "tickets", "events"
-  add_foreign_key "tickets", "users"
 end
