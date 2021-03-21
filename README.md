@@ -113,3 +113,10 @@ dip up worker
 ```
 dip rails g bullet:install
 ```
+
+# webpacker
+
+きちんとやっておこう
+```
+dip rails webpacker:install
+```
