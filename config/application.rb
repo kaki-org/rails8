@@ -35,5 +35,6 @@ module App
     # config.eager_load_paths << Rails.root.join("extras")
     # data-remote: trueをデフォルトでつける。本来ついている筈だが有効になってなかったので明示的に指定
     config.action_view.form_with_generates_remote_forms = true
+    config.active_storage.variant_processor = :vips
   end
 end
