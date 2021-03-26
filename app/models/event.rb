@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  searchkick language: "japanese"
   attr_accessor :remove_image
   before_save :remove_image_if_user_accept
   has_one_attached :image

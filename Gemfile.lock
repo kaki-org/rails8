@@ -89,6 +89,14 @@ GEM
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.12)
     diff-lcs (1.4.4)
+    elasticsearch (7.12.0)
+      elasticsearch-api (= 7.12.0)
+      elasticsearch-transport (= 7.12.0)
+    elasticsearch-api (7.12.0)
+      multi_json
+    elasticsearch-transport (7.12.0)
+      faraday (~> 1)
+      multi_json
     erubi (1.10.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
@@ -262,6 +270,10 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    searchkick (4.3.1)
+      activemodel (>= 5)
+      elasticsearch (>= 6)
+      hashie
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -337,6 +349,7 @@ DEPENDENCIES
   rspec-rails
   ruby-debug-ide
   sass-rails (>= 6)
+  searchkick (~> 4.3.0)
   selenium-webdriver
   sidekiq
   spring
