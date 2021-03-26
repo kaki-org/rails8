@@ -1,1 +1,0 @@
-network.host: <%= ENV['ELASTICSEARCH_URL'] | 'localhost' %>
