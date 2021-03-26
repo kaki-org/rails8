@@ -36,5 +36,8 @@ module App
     # data-remote: trueをデフォルトでつける。本来ついている筈だが有効になってなかったので明示的に指定
     config.action_view.form_with_generates_remote_forms = true
     config.active_storage.variant_processor = :vips
+    config.action_dispatch.rescue_responses.merge!(
+      "YourNewException" => :not_found
+    )
   end
 end
