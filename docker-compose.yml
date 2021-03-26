@@ -24,6 +24,7 @@ services:
     depends_on:
       - db
       - redis
+      - elasticsearch
     command: ["bin/rails", "server", "-b", "0.0.0.0"]
     expose: ["3000"]
     ports:
@@ -63,7 +64,23 @@ services:
     ports:
       - "53035:3035"
 
+  elasticsearch:
+    image: elasticsearch:7.10.1
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data
+    environment:
+      http.host: "0.0.0.0"
+      http.port: "9200"
+      discovery.type: "single-node"
+      ES_JAVA_OPTS: '-Xms256m -Xmx256m'
+    entrypoint: >
+      bash -c "bin/elasticsearch-plugin install analysis-kuromoji &&
+      bin/elasticsearch-plugin install analysis-icu &&
+      docker-entrypoint.sh"
+    expose: [ "9200" ]
+
 volumes:
   bundle:
   rails_cache:
   db:
+  elasticsearch:
