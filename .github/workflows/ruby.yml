@@ -15,6 +15,10 @@ jobs:
           - 3306:3306
         env:
           MYSQL_ROOT_PASSWORD: root
+      elasticsearch:
+        image: elasticsearch:7.10.1
+        ports:
+          - 9200:9200
 
     # https://github.com/ruby/setup-ruby
     steps:
