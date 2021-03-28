@@ -36,7 +36,7 @@ jobs:
         run: sudo apt-get install libmysqlclient-dev
       - name: Verify Elasticsearch connection from host
         env:
-          ELASTIC_SEARCH_URL: http://localhost:${{ job.services.elasticsearch.ports[9200] }}
+          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
         run: |
           echo $ELASTIC_SEARCH_URL
           curl -fsSL "$ELASTIC_SEARCH_URL/_cat/health?h=status"
@@ -78,4 +78,4 @@ jobs:
         run: bundle exec rspec
         env:
           RAILS_ENV: test
-          ELASTIC_SEARCH_URL: http://localhost:${{ job.services.elasticsearch.ports[9200] }}
+          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
