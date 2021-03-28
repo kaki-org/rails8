@@ -89,6 +89,9 @@ jobs:
         env:
           RAILS_ENV: test
 
+      - name: Run Brakeman
+        run: bundle exec brakeman
+
       - name: Run RSpec
         run: bundle exec rspec
         env:
