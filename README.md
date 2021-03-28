@@ -120,6 +120,7 @@ dip rails g bullet:install
 ```
 dip rails webpacker:install
 ```
+
 これでcssやjsがきちんと読み込まれないときは
 ```ruby
 rm -rf publick/packs/*
@@ -127,3 +128,4 @@ bin/webpack
 ```
 
 を実行してみる
+
