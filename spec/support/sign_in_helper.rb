@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SignInHelper
   def sign_in_as(user)
     OmniAuth.config.test_mode = true
@@ -5,15 +7,15 @@ module SignInHelper
       user.provider,
       uid: user.uid,
       info: { nickname: user.name,
-              image: user.image_url })
-    case
-    when respond_to?(:visit)
+              image: user.image_url }
+    )
+    if respond_to?(:visit)
       visit root_url
-      click_on "Githubでログイン"
-    when respond_to?(:get)
-      get "/auth/github/callback"
+      click_on 'Githubでログイン'
+    elsif respond_to?(:get)
+      get '/auth/github/callback'
     else
-      raise NotImplementedError.new
+      raise NotImplementedError
     end
     @current_user = user
   end
@@ -21,9 +23,10 @@ module SignInHelper
   def current_user
     @current_user
   end
-
 end
 
-class ActionDispatch::IntegrationTest
-  include SignInHelper
+module ActionDispatch
+  class IntegrationTest
+    include SignInHelper
+  end
 end

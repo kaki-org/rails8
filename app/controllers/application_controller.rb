@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   before_action :authenticate
   helper_method :logged_in?, :current_user
@@ -5,11 +7,12 @@ class ApplicationController < ActionController::Base
   # rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, with: :error404
 
   def error404
-    render "error404", status: 404, formats: [:html]
+    render 'error404', status: :not_found, formats: [:html]
   end
+
   def error500(e)
     logger.error [e, *e.backtrace].join("\n")
-    render "error500", status: 500, formats: [:html]
+    render 'error500', status: :internal_server_error, formats: [:html]
   end
 
   private
@@ -20,6 +23,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     return unless session[:user_id]
+
     @current_user ||= User.find(session[:user_id])
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventSearchForm
   include ActiveModel::Model
   include ActiveModel::Attributes
@@ -25,6 +27,6 @@ class EventSearchForm
   private
 
   def keyword_for_search
-    keyword.presence || "*"
+    keyword.presence || '*'
   end
 end
