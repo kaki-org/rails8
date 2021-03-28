@@ -23,6 +23,8 @@ module App
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.time_zone = "Tokyo"
+    config.i18n.default_locale = :ja
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -31,5 +33,7 @@ module App
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    # data-remote: trueをデフォルトでつける。本来ついている筈だが有効になってなかったので明示的に指定
+    config.action_view.form_with_generates_remote_forms = true
   end
 end

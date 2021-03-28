@@ -106,3 +106,17 @@ dip up worker
 
 とすると、perform_laterで`sidekiq`を起動しても何も処理されない。
 どういう事だろうか。。。
+
+
+# bullet
+
+```
+dip rails g bullet:install
+```
+
+# webpacker
+
+きちんとやっておこう
+```
+dip rails webpacker:install
+```
