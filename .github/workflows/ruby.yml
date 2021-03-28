@@ -18,7 +18,9 @@ jobs:
       elasticsearch:
         image: elasticsearch:7.10.1
         ports:
-          - 9200:9200
+          - 9200/tcp
+        options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
+
 
     # https://github.com/ruby/setup-ruby
     steps:
@@ -32,6 +34,12 @@ jobs:
       #MySQLをインストール
       - name: Install dependent libralies
         run: sudo apt-get install libmysqlclient-dev
+      - name: Verify Elasticsearch connection from host
+        env:
+          ELASTIC_SEARCH_URL: http://localhost:${{ job.services.elasticsearch.ports[9200] }}
+        run: |
+          echo $ELASTIC_SEARCH_URL
+          curl -fsSL "$ELASTIC_SEARCH_URL/_cat/health?h=status"
 
       - name: Setup bundler
         run: gem install bundler
@@ -70,3 +78,4 @@ jobs:
         run: bundle exec rspec
         env:
           RAILS_ENV: test
+          ELASTIC_SEARCH_URL: http://localhost:${{ job.services.elasticsearch.ports[9200] }}
