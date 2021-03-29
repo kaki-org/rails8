@@ -1,7 +1,11 @@
-require "minitest/autorun"
+# frozen_string_literal: true
+
+require 'minitest/autorun'
 
 class Person
-  def hello; 'hello' end
+  def hello
+    'hello'
+  end
 end
 
 class TestPerson < Minitest::Test

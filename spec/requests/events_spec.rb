@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Events", type: :request do
-  describe "自分でつくったイベントは" do
-    context "削除が成功すること" do
+RSpec.describe 'Events', type: :request do
+  describe '自分でつくったイベントは' do
+    context '削除が成功すること' do
       let(:event_owner) { FactoryBot.create(:user) }
       let(:event) { FactoryBot.create(:event, owner: event_owner) }
       before do
@@ -12,8 +14,8 @@ RSpec.describe "Events", type: :request do
 
       it { expect(Event.all.size).to eq 0 }
     end
-    describe "他人がつくったイベントは" do
-      context "削除が失敗すること" do
+    describe '他人がつくったイベントは' do
+      context '削除が失敗すること' do
         let(:event_owner) { FactoryBot.create(:user) }
         let(:user) { FactoryBot.create(:user) }
         let(:event) { FactoryBot.create(:event, owner: event_owner) }

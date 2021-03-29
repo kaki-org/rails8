@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# top page
 class WelcomeController < ApplicationController
   skip_before_action :authenticate
 

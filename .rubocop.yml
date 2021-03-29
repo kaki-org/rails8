@@ -1,0 +1,43 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+#AllCops:
+#  DisabledByDefault: true
+#
+#Lint:
+#  Enabled: true
+#
+#Security:
+#  Enabled: true
+
+# Offense count: 1
+# Configuration parameters: MinNameLength, AllowNamesEndingInNumbers, AllowedNames, ForbiddenNames.
+# AllowedNames: at, by, db, id, in, io, ip, of, on, os, pp, to
+Naming/MethodParameterName:
+  Exclude:
+    - 'app/controllers/application_controller.rb'
+
+# Offense count: 21
+# Configuration parameters: AllowedConstants.
+Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 23
+
+Metrics/BlockLength:
+  Max: 32
+
+Metrics/MethodLength:
+  Max: 26
+
+Rails/CreateTableWithTimestamps:
+  Exclude:
+    - 'db/migrate/20210324220117_create_active_storage_tables.active_storage.rb'
+
