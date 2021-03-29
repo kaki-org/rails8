@@ -93,7 +93,9 @@ jobs:
         run: bundle exec brakeman
 
       - name: Run RSpec
-        run: bundle exec rspec
+        run: |
+          COVERALLS_REPO_TOKEN=NHgYTiSexVwmLVvYzNdMj2CQem4Etvv bundle exec rspec
+          bundle exec coveralls push
         env:
           RAILS_ENV: test
           ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
