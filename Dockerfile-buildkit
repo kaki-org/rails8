@@ -22,14 +22,21 @@ RUN gem install bundler
 
 WORKDIR /app
 
+# syntax = docker/dockerfile:experimental
 COPY --chown=rails Gemfile Gemfile.lock package.json yarn.lock /app/
 
-RUN bundle install
-RUN yarn install
+RUN bundle config set app_config .bundle
+RUN bundle config set path .cache/bundle
+RUN --mount=type=cache,uid=1000,target=/app/.cache/bundle bundle install && \
+  mkdir -p vendor && \
+  cp -ar .cache/bundle vendor/bundle
+RUN bundle config set path vendor/bundle
+RUN --mount=type=cache,uid=1000,target=/app/.cache/node_modules yarn install --modules-folder .cache/node_modules && \
+  cp -ar .cache/node_modules node_modules
 
 COPY --chown=rails . /app
 
-RUN bin/rails assets:precompile
+RUN --mount=type=cache,uid=1000,target=/app/tmp/cache bin/rails assets:precompile
 
 VOLUME /app/public
 
