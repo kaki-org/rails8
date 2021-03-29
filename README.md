@@ -129,3 +129,29 @@ bin/webpack
 
 を実行してみる
 
+# skylight
+
+```
+teruo.kakikubo@C02DN0TXML87 ~/Documents/rails6 % dip bundle exec skylight setup wfY88nn7tx0p
+Creating rails6_web_run ... done
+W, [2021-03-30T07:47:43.025198 #21]  WARN -- Skylight: [SKYLIGHT] [5.0.1] Running Skylight in development mode. No data will be reported until you deploy your app.
+(To disable this message for all local apps, run `skylight disable_dev_warning`.)
+Running via Spring preloader in process 41
+Congratulations. Your application is on Skylight! https://www.skylight.io
+
+The application was registered for you and we generated a config file
+containing your API token at:
+
+  config/skylight.yml
+
+The next step is for you to deploy your application to production. The
+easiest way is to just commit the config file to your source control
+repository and deploy from there. You can learn more about the process at:
+
+  https://docs.skylight.io/getting-set-up/#deployment
+
+If you want to specify the authentication token as an environment variable,
+you should set the `SKYLIGHT_AUTHENTICATION` variable to:
+
+  E2movt18Qd0UnzxeJKZJ51TfV5pBTE7FcBiPZRxUXWk
+```
