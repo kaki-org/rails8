@@ -98,6 +98,6 @@ jobs:
           RAILS_ENV: test
           ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
       - name: Coveralls GitHub Action
-        uses: coverallsapp/github-action@v1.1.2
+        uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
