@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-gem 'active_storage_validations', '~> 0.8.8'
+gem 'active_storage_validations', '~> 0.9.2'
 gem 'image_processing', '~> 1.2'
 gem 'sidekiq'
 # Reduces boot times through caching; required in config/boot.rb
@@ -37,11 +37,12 @@ gem 'omniauth', '~> 2.0.3'
 gem 'omniauth-github', '~> 2.0.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.0'
 gem 'rails-i18n', '~> 6.0.0'
-gem 'searchkick', '~> 4.3.0'
+gem 'searchkick', '~> 4.4.4'
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-lcov', require: false, group: :test
 # gem 'coveralls', require: false, group: :test #メンテされてないみたい
 gem 'coveralls_reborn', '~> 0.21.0', require: false
+gem 'skylight'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -59,7 +60,7 @@ group :development do
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'listen', '~> 3.3'
-  gem 'rack-mini-profiler', '~> 2.0'
+  gem 'rack-mini-profiler', '~> 2.0', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'rspec-rails'
   gem 'rubocop', require: false
