@@ -155,3 +155,17 @@ you should set the `SKYLIGHT_AUTHENTICATION` variable to:
 
   E2movt18Qd0UnzxeJKZJ51TfV5pBTE7FcBiPZRxUXWk
 ```
+
+# Docker
+
+Dockerfileを単体で用意してあるのでそちらを利用する。.dockerignoreも参照
+```
+docker build -t myrailsapp .
+docker run -p 3000:3000 myrailsapp
+```
+
+buildkitで高速化した例
+```
+DOCKER_BUILDKIT=1 docker build -t myrailsapp -f Dockerfile-buildkit .
+docker run -p 3000:3000 myrailsapp
+```
