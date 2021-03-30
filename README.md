@@ -169,3 +169,18 @@ buildkitで高速化した例
 DOCKER_BUILDKIT=1 docker build -t myrailsapp -f Dockerfile-buildkit .
 docker run -p 3000:3000 myrailsapp
 ```
+
+# FIXME
+
+`Event.reindex` を実行していないと以下のログが出て前に進めない。
+
+```
+Searchkick::MissingIndexError (Index missing - run Event.reindex):
+```
+
+どうにか、初期化時になんとかする事はできないのか。
+```
+dip rails searchkick:reindex CLASS=Event
+```
+
+結局上記をprovisionに含めるしかなさそうかな。。
