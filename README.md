@@ -75,7 +75,7 @@ h2oを起動する
 
 http://rails6.lvh.me:53000/sidekiq
 
-ちょっと謎な動き。
+FIXME ちょっと謎な動き。
 
 ```
 irb(main):007:0> AsyncLogJob.perform_later(message: '44')
