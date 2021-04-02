@@ -7,7 +7,7 @@ RSpec.describe Event, type: :model do
 
   describe '正常なパラメータが入力された場合' do
     context 'イベントは' do
-      let(:event) { FactoryBot.create(:event) }
+      let(:event) { create(:event) }
       it '正しくイベントが作成されること' do
         expect(event).to be_valid
       end

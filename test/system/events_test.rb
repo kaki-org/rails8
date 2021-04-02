@@ -4,21 +4,21 @@ require 'application_system_test_case'
 
 class EventsTest < ApplicationSystemTestCase
   test '/events/:id ページを表示' do
-    event = FactoryBot.create(:event)
+    event = create(:event)
     visit event_url(event)
 
     assert_selector 'h1', text: event.name
   end
 
   test '/events/new ページを表示' do
-    sign_in_as(FactoryBot.create(:user))
+    sign_in_as(create(:user))
 
     visit new_event_url
     assert_selector 'h1', text: 'イベント作成'
   end
 
   test '/events/new ページでフォームを記入して登録' do
-    sign_in_as(FactoryBot.create(:user))
+    sign_in_as(create(:user))
 
     visit new_event_url
     assert_selector 'h1', text: 'イベント作成'
@@ -49,8 +49,8 @@ class EventsTest < ApplicationSystemTestCase
   end
 
   test '/events/:id ページを表示して削除ボタンを押す' do
-    sign_in_as(FactoryBot.create(:user))
-    event = FactoryBot.create(:event, owner: current_user)
+    sign_in_as(create(:user))
+    event = create(:event, owner: current_user)
     visit event_url(event)
     assert_difference('Event.count', -1) do
       accept_confirm do
