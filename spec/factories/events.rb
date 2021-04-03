@@ -8,5 +8,14 @@ FactoryBot.define do
     sequence(:content) { |i| "イベント本文#{i}" }
     start_at { rand(1..30).days.from_now }
     end_at { start_at + rand(1..30).hours }
+
+    trait :no_start_at do
+      start_at { nil }
+      end_at { Time.current + rand(1..30).hours }
+    end
+    trait :no_end_at do
+      start_at { Time.current }
+      end_at { nil }
+    end
   end
 end
