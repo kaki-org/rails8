@@ -94,8 +94,8 @@ jobs:
 
       - name: Run RSpec
         run: |
-          COVERALLS_REPO_TOKEN=NHgYTiSexVwmLVvYzNdMj2CQem4Etvv bundle exec rspec
-          COVERALLS_REPO_TOKEN=NHgYTiSexVwmLVvYzNdMj2CQem4Etvv bundle exec coveralls push
+          COVERALLS_REPO_TOKEN=yjNHgYTiSexVwmLVvYzNdMj2CQem4Etvv bundle exec rspec
+          COVERALLS_REPO_TOKEN=yjNHgYTiSexVwmLVvYzNdMj2CQem4Etvv bundle exec coveralls push
         env:
           RAILS_ENV: test
           ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
