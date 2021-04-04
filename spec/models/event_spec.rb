@@ -17,6 +17,13 @@ RSpec.describe Event, type: :model do
         expect(event.errors[:image]).not_to eq(['を入力してください'])
       end
     end
+    context '作成ユーザが作ったイベントの場合' do
+      let(:user) { create(:user) }
+      let(:event) { build(:event, owner: user) }
+      it '作成者と判定されること' do
+        expect(event.created_by?(event.owner)).to be_truthy
+      end
+    end
   end
 
   describe '異常系' do
@@ -54,6 +61,13 @@ RSpec.describe Event, type: :model do
       it 'イベントが作成されないこと' do
         expect(event).not_to be_valid
         expect(event.errors[:end_at]).to eq(['を入力してください'])
+      end
+    end
+    context '作成ユーザ以外が作ったイベントの場合' do
+      let(:user) { create(:user) }
+      let(:event) { build(:event) }
+      it '作成者と判定されること' do
+        expect(event.created_by?(user)).to be_falsey
       end
     end
   end
