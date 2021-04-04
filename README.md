@@ -184,3 +184,13 @@ dip rails searchkick:reindex CLASS=Event
 ```
 
 結局上記をprovisionに含めるしかなさそうかな。。
+
+# SimpleCov
+
+テスト結果は毎度 coverage/index.html として出力されているのでそちらを
+参照しつつカバレッジをあげていく
+
+```
+dip rspec
+open coverage/index.html
+```
