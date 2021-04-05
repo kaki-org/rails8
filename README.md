@@ -199,3 +199,5 @@ open coverage/index.html
 
 これを使えばpushが重なった場合にでも処理をキャンセルできる
 https://github.com/styfle/cancel-workflow-action
+
+やってみた
