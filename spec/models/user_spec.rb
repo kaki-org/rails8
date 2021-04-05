@@ -35,5 +35,26 @@ RSpec.describe User, type: :model do
         expect(user.errors[:name]).to eq(['を入力してください'])
       end
     end
+    context '公開中の未終了イベントがある場合' do
+      let!(:user) { create(:user) }
+      let!(:event) { create(:event, owner: user) }
+      it '削除しようとすると失敗する' do
+        user.destroy
+        expect(user.errors[:base]).to eq(['公開中の未終了イベントが存在します'])
+      end
+    end
+    context '参加中の未終了イベントがある場合' do
+      let!(:event) { create(:event) }
+      let!(:user) { create(:user) }
+      it '削除しようとすると失敗する' do
+        ticket = user.tickets.build do |t|
+          t.event = event
+          t.comment = '参加します'
+        end
+        ticket.save
+        user.destroy
+        expect(user.errors[:base]).to eq(['未終了の参加イベントが存在します'])
+      end
+    end
   end
 end
