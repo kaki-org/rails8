@@ -10,12 +10,27 @@ RSpec.describe User, type: :model do
         expect(user).to be_valid
       end
     end
+    context 'auth_hashが正しく渡されたユーザは' do
+      let(:params) {
+        {
+          provider: 'github',
+          uid: 'uid99',
+          info: {
+            nickname: 'jimmy',
+            image: 'http://example.com/uid99.png'
+          }
+        }
+      }
+      it '正しく作成されること' do
+        user = User.find_or_create_from_auth_hash!(params)
+        expect(user).to be_valid
+      end
+    end
   end
   describe '異常系' do
     context '名前が指定されていない場合' do
       let(:user) { build(:user, name: nil) }
       it 'ユーザが作成されないこと' do
-        # binding.pry
         expect(user).not_to be_valid
         expect(user.errors[:name]).to eq(['を入力してください'])
       end
