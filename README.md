@@ -201,3 +201,10 @@ open coverage/index.html
 https://github.com/styfle/cancel-workflow-action
 
 やってみた
+
+# FIXME
+
+## 他のユーザが作成したイベントに参加できない
+
+- [ ] テストケースを書く
+- [ ] 修正する
