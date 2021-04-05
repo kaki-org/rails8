@@ -22,10 +22,17 @@ jobs:
         options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
 
 
+    cancel:
+      name: 'Cancel Previous Runs'
+      runs-on: ubuntu-latest
+      steps:
+        - name: Cancel Previous Runs
+          uses: styfle/cancel-workflow-action@0.8.0
+          with:
+            access_token: ${{ github.token }}
     # https://github.com/ruby/setup-ruby
     steps:
       - uses: actions/checkout@v2
-
       - name: Setup Ruby version
         uses: ruby/setup-ruby@master
         with:
