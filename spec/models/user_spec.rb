@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
       end
     end
     context 'auth_hashが正しく渡されたユーザは' do
-      let(:params) {
+      let(:params) do
         {
           provider: 'github',
           uid: 'uid99',
@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
             image: 'http://example.com/uid99.png'
           }
         }
-      }
+      end
       it '正しく作成されること' do
         user = User.find_or_create_from_auth_hash!(params)
         expect(user).to be_valid

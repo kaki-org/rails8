@@ -115,5 +115,5 @@ RSpec.configure do |config|
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
 
-  #parallelize(workers: :number_of_processors)
+  # parallelize(workers: :number_of_processors)
 end
