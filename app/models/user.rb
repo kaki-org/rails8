@@ -3,9 +3,10 @@
 class User < ApplicationRecord
   before_destroy :check_all_events_finished
 
-  has_many :created_events, class_name: 'Event', foreign_key: 'owner_id', dependent: :nullify
+  has_many :created_events, class_name: 'Event', foreign_key: 'owner_id', dependent: :nullify, inverse_of: :owner
   has_many :tickets, dependent: :nullify
   has_many :participating_events, through: :tickets, source: :event
+  validates :name, presence: true
 
   def self.find_or_create_from_auth_hash!(auth_hash)
     provider = auth_hash[:provider]
@@ -23,9 +24,8 @@ class User < ApplicationRecord
 
   def check_all_events_finished
     now = Time.zone.now
-    errors[:base] << '公開中の未終了イベントが存在します' if created_events.where(':now < end_at', now: now).exists?
-
-    errors[:base] << '未終了の参加イベントが存在します' if participating_events.where(':now < end_at', now: now).exists?
+    errors.add(:base, '公開中の未終了イベントが存在します') if created_events.where(':now < end_at', now: now).exists?
+    errors.add(:base, '未終了の参加イベントが存在します') if participating_events.where(':now < end_at', now: now).exists?
 
     throw(:abort) unless errors.empty?
   end

@@ -34,7 +34,6 @@ class Event < ApplicationRecord
     errors.add(:start_at, 'は終了時間よりも前に設定してください') if start_at >= end_at
   end
 
-
   def remove_image_if_user_accept
     self.image = nil if ActiveRecord::Type::Boolean.new.cast(remove_image)
   end

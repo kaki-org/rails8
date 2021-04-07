@@ -41,7 +41,7 @@ gem 'searchkick', '~> 4.4.4'
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-lcov', require: false, group: :test
 # gem 'coveralls', require: false, group: :test #メンテされてないみたい
-gem 'coveralls_reborn', '~> 0.21.0', require: false
+# gem 'coveralls_reborn', '~> 0.21.0', require: false
 gem 'skylight'
 
 group :development, :test do
@@ -75,6 +75,7 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
+  gem 'rubocop-rspec', require: false
   gem 'webdrivers'
 end
 

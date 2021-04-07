@@ -10,8 +10,8 @@ class WelcomesTest < ApplicationSystemTestCase
   end
 
   test '/ ページを表示して、未来のイベントは表示、過去のイベントは非表示であること' do
-    future_event = FactoryBot.create(:event, start_at: Time.zone.now + 3.days)
-    past_event   = FactoryBot.create(:event, start_at: Time.zone.now + 1.day)
+    future_event = create(:event, start_at: Time.zone.now + 3.days)
+    past_event   = create(:event, start_at: Time.zone.now + 1.day)
 
     travel_to Time.zone.now + 2.days do
       visit root_url
