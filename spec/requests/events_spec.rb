@@ -28,6 +28,48 @@ RSpec.describe 'Events', type: :request do
       end
     end
   end
+  describe '作成' do
+    context '未ログイン状態' do
+      before {
+        get new_event_path
+      }
+      it "参照できない" do
+        expect(response.status).to eq 302
+      end
+    end
+    context 'ログイン状態' do
+      let(:user) { create(:user) }
+      before {
+        sign_in_as user
+        get new_event_path
+      }
+      it "参照できる" do
+        expect(response.status).to eq 200
+      end
+      context 'パラメータを正しく入れる' do
+        let(:params) do
+          {
+            event: {
+              name: 'ビールイベント',
+              place: '日比谷公園',
+              image: nil,
+              remove_image: nil,
+              content: '真夏の太陽の下でビールを楽しもう',
+              start_at: '2021-07-30 13:00',
+              end_at: '2021-7-30 17:00'
+            }
+          }
+        end
+        let!(:event_count) { Event.all.size }
+        before {
+          post events_path, params: params
+        }
+        it "正しく作成される" do
+          expect(event_count + 1).to eq(Event.all.size)
+        end
+      end
+    end
+  end
   describe '削除' do
     let(:event_owner) { create(:user) }
     let(:user) { create(:user) }
