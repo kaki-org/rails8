@@ -32,7 +32,7 @@ Metrics/AbcSize:
   Max: 23
 
 Metrics/BlockLength:
-  Max: 66
+  Enabled: false
 
 Metrics/MethodLength:
   Max: 26

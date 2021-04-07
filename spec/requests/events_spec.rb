@@ -8,21 +8,21 @@ RSpec.describe 'Events', type: :request do
     let(:user) { create(:user) }
     let(:event) { create(:event, owner: event_owner) }
     context '自分が作ったイベントは' do
-      before {
+      before do
         sign_in_as event_owner
         get event_path(event)
-      }
-      it "参照できる" do
+      end
+      it '参照できる' do
         expect(response.status).to eq 200
         expect(response.body).to include '参加する'
       end
     end
     context '他人が作ったイベントは' do
-      before {
+      before do
         sign_in_as user
         get event_path(event)
-      }
-      it "参照できる" do
+      end
+      it '参照できる' do
         expect(response.status).to eq 200
         expect(response.body).to include '参加する'
       end
@@ -30,20 +30,20 @@ RSpec.describe 'Events', type: :request do
   end
   describe '作成' do
     context '未ログイン状態' do
-      before {
+      before do
         get new_event_path
-      }
-      it "参照できない" do
+      end
+      it '参照できない' do
         expect(response.status).to eq 302
       end
     end
     context 'ログイン状態' do
       let(:user) { create(:user) }
-      before {
+      before do
         sign_in_as user
         get new_event_path
-      }
-      it "参照できる" do
+      end
+      it '参照できる' do
         expect(response.status).to eq 200
       end
       context 'パラメータを正しく入れる' do
@@ -61,12 +61,68 @@ RSpec.describe 'Events', type: :request do
           }
         end
         let!(:event_count) { Event.all.size }
-        before {
+        before do
           post events_path, params: params
-        }
-        it "正しく作成される" do
+        end
+        it '正しく作成される' do
           expect(event_count + 1).to eq(Event.all.size)
         end
+      end
+    end
+  end
+  describe '編集' do
+    let(:event_owner) { create(:user) }
+    let(:user) { create(:user) }
+    let(:event) { create(:event, owner: event_owner) }
+    context '自分がつくったイベントは' do
+      before do
+        sign_in_as event_owner
+        get edit_event_path(id: event.id)
+      end
+      it '参照できること' do
+        expect(response.status).to eq 200
+      end
+    end
+    context '他人がつくったイベントは' do
+      before do
+        sign_in_as user
+      end
+      it '参照できないこと' do
+        expect do
+          get edit_event_path(id: event.id)
+        end.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
+  describe '更新' do
+    let(:event_owner) { create(:user) }
+    let(:user) { create(:user) }
+    let(:event) { create(:event, owner: event_owner) }
+    let(:params) do
+      {
+        event: {
+          place: '代々木公園'
+        }
+      }
+    end
+    context '自分がつくったイベントは' do
+      before do
+        sign_in_as event_owner
+        patch event_path(id: event.id), params: params
+      end
+      it '更新が成功すること' do
+        event.reload
+        expect(event.place).to eq('代々木公園')
+      end
+    end
+    context '他人がつくったイベントは' do
+      before do
+        sign_in_as user
+      end
+      it '更新が失敗すること' do
+        expect do
+          patch event_path(id: event.id), params: params
+        end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end
@@ -80,7 +136,7 @@ RSpec.describe 'Events', type: :request do
         delete event_path(id: event.id)
       end
 
-      it "削除が成功すること" do
+      it '削除が成功すること' do
         expect(Event.all.size).to eq 0
       end
     end
