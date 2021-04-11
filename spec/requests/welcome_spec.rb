@@ -17,7 +17,7 @@ RSpec.describe 'Welcomes', type: :request do
     context '検索条件を指定しないとき' do
       before do
         Event.reindex
-        get root_path
+        get root_path, params: nil
       end
       it '全件かえってくる' do
         expect(response).to have_http_status(:success)
