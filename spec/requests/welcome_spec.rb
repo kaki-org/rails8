@@ -7,6 +7,13 @@ RSpec.describe 'Welcomes', type: :request do
     let!(:event1) { create(:event, start_at: 1.day.from_now) }
     let!(:event2) { create(:event, start_at: 2.days.from_now) }
     let!(:event3) { create(:event, start_at: 3.days.from_now) }
+    let(:params) do
+      {
+        event_search_form: {
+          start_at: 1.day.from_now
+        }
+      }
+    end
     context '検索条件を指定しないとき' do
       before do
         Event.reindex
@@ -20,13 +27,6 @@ RSpec.describe 'Welcomes', type: :request do
       end
     end
     context '検索条件を指定したとき' do
-      let(:params) do
-        {
-          event_search_form: {
-            start_at: 1.day.from_now
-          }
-        }
-      end
       before do
         Event.reindex
         get root_path, params: params
