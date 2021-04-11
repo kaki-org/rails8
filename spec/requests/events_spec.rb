@@ -129,15 +129,16 @@ RSpec.describe 'Events', type: :request do
   describe '削除' do
     let(:event_owner) { create(:user) }
     let(:user) { create(:user) }
-    let(:event) { create(:event, owner: event_owner) }
+    let!(:event) { create(:event, owner: event_owner) }
     context '自分が作ったイベントは' do
       before do
         sign_in_as event_owner
-        delete event_path(id: event.id)
       end
 
       it '削除が成功すること' do
-        expect(Event.all.size).to eq 0
+        expect do
+          delete event_path(id: event.id)
+        end.to change { Event.all.size }.by(-1)
       end
     end
     context '他人がつくったイベントは' do
