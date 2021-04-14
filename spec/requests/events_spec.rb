@@ -60,12 +60,13 @@ RSpec.describe 'Events', type: :request do
             }
           }
         end
-        let!(:event_count) { Event.all.size }
         before do
           post events_path, params: params
         end
         it '正しく作成される' do
-          expect(event_count + 1).to eq(Event.all.size)
+          expect do
+            post events_path, params: params
+          end.to change { Event.count }.by(1)
         end
       end
     end
@@ -138,7 +139,7 @@ RSpec.describe 'Events', type: :request do
       it '削除が成功すること' do
         expect do
           delete event_path(id: event.id)
-        end.to change { Event.all.size }.by(-1)
+        end.to change { Event.count }.by(-1)
       end
     end
     context '他人がつくったイベントは' do
@@ -149,7 +150,6 @@ RSpec.describe 'Events', type: :request do
       it '削除が失敗すること' do
         expect do
           delete event_path(id: event.id)
-          Event.all.size
         end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
