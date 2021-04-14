@@ -13,7 +13,7 @@ RSpec.describe 'Events', type: :request do
         get event_path(event)
       end
       it '参照できる' do
-        expect(response.status).to eq 200
+        expect(response).to have_http_status :ok
         expect(response.body).to include '参加する'
       end
     end
@@ -23,7 +23,7 @@ RSpec.describe 'Events', type: :request do
         get event_path(event)
       end
       it '参照できる' do
-        expect(response.status).to eq 200
+        expect(response).to have_http_status :ok
         expect(response.body).to include '参加する'
       end
     end
@@ -34,7 +34,7 @@ RSpec.describe 'Events', type: :request do
         get new_event_path
       end
       it '参照できない' do
-        expect(response.status).to eq 302
+        expect(response).to have_http_status :redirect
       end
     end
     context 'ログイン状態' do
@@ -44,7 +44,7 @@ RSpec.describe 'Events', type: :request do
         get new_event_path
       end
       it '参照できる' do
-        expect(response.status).to eq 200
+        expect(response).to have_http_status :ok
       end
       context 'パラメータを正しく入れる' do
         let(:params) do
