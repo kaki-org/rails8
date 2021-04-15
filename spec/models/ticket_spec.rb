@@ -34,6 +34,5 @@ RSpec.describe Ticket, type: :model do
         expect(ticket).not_to be_valid
       end
     end
-
   end
 end
