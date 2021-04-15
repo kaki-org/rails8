@@ -27,6 +27,14 @@ RSpec.describe 'Events', type: :request do
         expect(response.body).to include '参加する'
       end
     end
+    context '存在しないイベントは' do
+      before do
+        get event_path(99)
+      end
+      it '404エラーが返る' do
+        expect(response).to have_http_status :not_found
+      end
+    end
   end
   describe '作成' do
     context '未ログイン状態' do
