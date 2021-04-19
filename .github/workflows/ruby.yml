@@ -4,7 +4,15 @@ name: Build
 on: [ pull_request ]
 
 jobs:
-  setup_and_test_execution:
+  cancel:
+    name: 'Cancel Previous Runs'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.8.0
+        with:
+          access_token: ${{ github.token }}
+  rspec-job:
     #ubuntu環境で動かします
     runs-on: ubuntu-18.04
 
@@ -21,11 +29,9 @@ jobs:
           - 9200/tcp
         options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
 
-
     # https://github.com/ruby/setup-ruby
     steps:
       - uses: actions/checkout@v2
-
       - name: Setup Ruby version
         uses: ruby/setup-ruby@master
         with:
@@ -42,7 +48,7 @@ jobs:
       - name: Run Elasticsearch
         uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
         with:
-          stack-version: 7.6.0
+          stack-version: 7.10.1
           plugins: |
             analysis-kuromoji
             analysis-icu
@@ -94,8 +100,8 @@ jobs:
 
       - name: Run RSpec
         run: |
-          COVERALLS_REPO_TOKEN=NHgYTiSexVwmLVvYzNdMj2CQem4Etvv bundle exec rspec
-          COVERALLS_REPO_TOKEN=NHgYTiSexVwmLVvYzNdMj2CQem4Etvv bundle exec coveralls push
+          bundle exec rspec
+          # COVERALLS_REPO_TOKEN=yjNHgYTiSexVwmLVvYzNdMj2CQem4Etvv bundle exec coveralls push
         env:
           RAILS_ENV: test
           ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}

@@ -5,6 +5,7 @@ ja:
       ticket: チケット
     attributes:
       event:
+        owner: 主催者
         name: 名前
         place: 場所
         start_at: 開始時間

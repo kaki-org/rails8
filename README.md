@@ -184,3 +184,26 @@ dip rails searchkick:reindex CLASS=Event
 ```
 
 結局上記をprovisionに含めるしかなさそうかな。。
+
+# SimpleCov
+
+テスト結果は毎度 coverage/index.html として出力されているのでそちらを
+参照しつつカバレッジをあげていく
+
+```
+dip rspec
+open coverage/index.html
+```
+
+# キャンセルワークフロー
+
+これを使えばpushが重なった場合にでも処理をキャンセルできる
+https://github.com/styfle/cancel-workflow-action
+
+
+# FIXME
+
+## 他のユーザが作成したイベントに参加できない
+
+- [x] テストケースを書く
+- [x] 修正する
