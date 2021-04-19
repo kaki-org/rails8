@@ -13,7 +13,7 @@ RSpec.describe 'Events', type: :request do
         get event_path(event)
       end
       it '参照できる' do
-        expect(response.status).to eq 200
+        expect(response).to have_http_status :ok
         expect(response.body).to include '参加する'
       end
     end
@@ -23,8 +23,16 @@ RSpec.describe 'Events', type: :request do
         get event_path(event)
       end
       it '参照できる' do
-        expect(response.status).to eq 200
+        expect(response).to have_http_status :ok
         expect(response.body).to include '参加する'
+      end
+    end
+    context '存在しないイベントは' do
+      before do
+        get event_path(99)
+      end
+      it '404エラーが返る' do
+        expect(response).to have_http_status :not_found
       end
     end
   end
@@ -34,7 +42,7 @@ RSpec.describe 'Events', type: :request do
         get new_event_path
       end
       it '参照できない' do
-        expect(response.status).to eq 302
+        expect(response).to have_http_status :redirect
       end
     end
     context 'ログイン状態' do
@@ -44,7 +52,7 @@ RSpec.describe 'Events', type: :request do
         get new_event_path
       end
       it '参照できる' do
-        expect(response.status).to eq 200
+        expect(response).to have_http_status :ok
       end
       context 'パラメータを正しく入れる' do
         let(:params) do
@@ -60,12 +68,13 @@ RSpec.describe 'Events', type: :request do
             }
           }
         end
-        let!(:event_count) { Event.all.size }
         before do
           post events_path, params: params
         end
         it '正しく作成される' do
-          expect(event_count + 1).to eq(Event.all.size)
+          expect do
+            post events_path, params: params
+          end.to change { Event.count }.by(1)
         end
       end
     end
@@ -138,7 +147,7 @@ RSpec.describe 'Events', type: :request do
       it '削除が成功すること' do
         expect do
           delete event_path(id: event.id)
-        end.to change { Event.all.size }.by(-1)
+        end.to change { Event.count }.by(-1)
       end
     end
     context '他人がつくったイベントは' do
@@ -149,7 +158,6 @@ RSpec.describe 'Events', type: :request do
       it '削除が失敗すること' do
         expect do
           delete event_path(id: event.id)
-          Event.all.size
         end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
