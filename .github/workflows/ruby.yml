@@ -1,0 +1,107 @@
+name: Build
+
+#プルリクエスト作成時に実行(他にもpush時など設定できます)
+on: [ pull_request ]
+
+jobs:
+  cancel:
+    name: 'Cancel Previous Runs'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.8.0
+        with:
+          access_token: ${{ github.token }}
+  rspec-job:
+    #ubuntu環境で動かします
+    runs-on: ubuntu-18.04
+
+    services:
+      mysql:
+        image: mysql:5.7
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: root
+      elasticsearch:
+        image: elasticsearch:7.10.1
+        ports:
+          - 9200/tcp
+        options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
+
+    # https://github.com/ruby/setup-ruby
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Ruby version
+        uses: ruby/setup-ruby@master
+        with:
+          ruby-version: 3.0.1
+        env:
+         ImageOS: ubuntu18
+      # elasticsearch起動用に必要
+      - name: Configure sysctl limits
+        run: |
+          sudo swapoff -a
+          sudo sysctl -w vm.swappiness=1
+          sudo sysctl -w fs.file-max=262144
+          sudo sysctl -w vm.max_map_count=262144
+      - name: Run Elasticsearch
+        uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
+        with:
+          stack-version: 7.10.1
+          plugins: |
+            analysis-kuromoji
+            analysis-icu
+      #MySQLをインストール
+      - name: Install dependent libralies
+        run: sudo apt-get install libmysqlclient-dev
+      - name: Verify Elasticsearch connection from host
+        env:
+          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
+        run: |
+          echo $ELASTIC_SEARCH_URL
+          curl -fsSL "$ELASTIC_SEARCH_URL/_cat/health?h=status"
+
+      - name: Setup bundler
+        run: gem install bundler
+
+      - name: Cache gems
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: bundle install
+        run: |
+          bundle config set path 'vendor/bundle'
+          bundle install --jobs 4 --retry 3
+      - name: yarn install
+        run: yarn install --check-files
+
+      - name: Setup Database
+        run: |
+          cp config/database.yml.github-actions config/database.yml
+          bundle exec rake db:create
+          bundle exec rake db:migrate
+          # bundle exec rake db:schema:load
+        env:
+          RAILS_ENV: test
+
+      - name: Run Brakeman
+        run: bundle exec brakeman
+
+      - name: Run RSpec
+        run: |
+          bundle exec rspec
+          # COVERALLS_REPO_TOKEN=yjNHgYTiSexVwmLVvYzNdMj2CQem4Etvv bundle exec coveralls push
+        env:
+          RAILS_ENV: test
+          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
