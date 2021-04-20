@@ -1,7 +1,11 @@
 name: Build
 
 #プルリクエスト作成時に実行(他にもpush時など設定できます)
-on: [ pull_request ]
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
 
 jobs:
   cancel:
