@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-gem 'active_storage_validations', '~> 0.9.4'
+gem 'active_storage_validations', '~> 0.9.5'
 gem 'image_processing', '~> 1.2'
 gem 'sidekiq'
 # Reduces boot times through caching; required in config/boot.rb
