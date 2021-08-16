@@ -66,5 +66,5 @@ interaction:
 provision:
   - dip compose down --volumes
   - dip compose up -d db redis elasticsearch
-  - dip rails db:migrate:reset db:seed
   - dip bash -c ./bin/setup
+  - dip rails db:migrate:reset db:seed
