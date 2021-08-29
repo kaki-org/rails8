@@ -35,7 +35,7 @@ jobs:
       - name: Setup Ruby version
         uses: ruby/setup-ruby@master
         with:
-          ruby-version: 3.0.1
+          ruby-version: 3.0.2
         env:
          ImageOS: ubuntu18
       # elasticsearch起動用に必要
