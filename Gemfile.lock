@@ -106,7 +106,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (1.7.0)
+    faraday (1.8.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -310,7 +310,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    searchkick (4.6.0)
+    searchkick (4.6.1)
       activemodel (>= 5)
       elasticsearch (>= 6, < 7.14)
       hashie
@@ -403,7 +403,7 @@ DEPENDENCIES
   rubocop-rspec
   ruby-debug-ide
   sass-rails (>= 6)
-  searchkick (~> 4.6.0)
+  searchkick (~> 4.6.1)
   selenium-webdriver
   sidekiq
   simplecov
