@@ -109,3 +109,5 @@ jobs:
         uses: aki77/simplecov-report-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Codecov
+        uses: codecov/codecov-action@v2.1.0
