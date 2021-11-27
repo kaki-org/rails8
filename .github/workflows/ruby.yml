@@ -105,6 +105,8 @@ jobs:
         env:
           RAILS_ENV: test
           ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
       - name: Simplecov Report
         uses: aki77/simplecov-report-action@v1
         with:
