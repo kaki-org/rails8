@@ -19,8 +19,6 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
 )
 
 SimpleCov.start 'rails'
-require 'codecov'
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 # Coveralls.wear!('rails')
 
