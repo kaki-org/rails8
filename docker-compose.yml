@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   web: &web
-    image: circleci/ruby:3.0.2-node-browsers
+    image: cimg/ruby:3.0.3-browsers
     # build:
     #   context: .
     #   dockerfile: ./devenv/web/Dockerfile

@@ -1,4 +1,4 @@
-FROM circleci/ruby:3.0.2-node-browsers
+FROM cimg/ruby:3.0.3-node-browsers
 RUN sudo apt-get update -qq && sudo apt-get install -y libvips-dev
 RUN sudo mkdir /app
 WORKDIR /app
