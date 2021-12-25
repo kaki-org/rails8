@@ -14,7 +14,7 @@ jobs:
           access_token: ${{ github.token }}
   rspec-job:
     #ubuntu環境で動かします
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     services:
       mysql:
@@ -35,7 +35,7 @@ jobs:
       - name: Setup Ruby version
         uses: ruby/setup-ruby@master
         with:
-          ruby-version: 3.0.2
+          ruby-version: 3.0.3
         env:
          ImageOS: ubuntu18
       # elasticsearch起動用に必要
