@@ -1149,21 +1149,7 @@
   dependencies:
     "@rails/activestorage" ">= 7.0.0-alpha1"
 
-"@rails/activestorage@>= 7.0.0-alpha1":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-7.0.0.tgz#1d4391bae75693bcfa73fc220904b248de3dea06"
-  integrity sha512-9tE4P15DMgLhx/ILqvztepvu0YwtAyoYH1k25CrkkWphLNfu3HNbncfRgsJxmd9t8rMhZh8ZDEQchYrjuOL3hg==
-  dependencies:
-    spark-md5 "^3.0.1"
-
-"@rails/activestorage@^6.0.0":
-  version "6.1.3"
-  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-6.1.3.tgz#d76ce0fe59b5778e05b967c22c61b2964fde112a"
-  integrity sha512-9it2rc+79E+GP4GWX/P2M9/INcp1SicJaiF5yqj+k40x/JY+/eVdSAGfRCgq2G/FwkUdGlaKnG2OoDcXchczlw==
-  dependencies:
-    spark-md5 "^3.0.0"
-
-"@rails/activestorage@^7.0.0":
+"@rails/activestorage@>= 7.0.0-alpha1", "@rails/activestorage@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-7.0.0.tgz#1d4391bae75693bcfa73fc220904b248de3dea06"
   integrity sha512-9tE4P15DMgLhx/ILqvztepvu0YwtAyoYH1k25CrkkWphLNfu3HNbncfRgsJxmd9t8rMhZh8ZDEQchYrjuOL3hg==
@@ -7343,11 +7329,6 @@ source-map@~0.7.2:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
 
-spark-md5@^3.0.0, spark-md5@^3.0.1:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/spark-md5/-/spark-md5-3.0.2.tgz#7952c4a30784347abcee73268e473b9c0167e3fc"
-  integrity sha512-wcFzz9cDfbuqe0FZzfi2or1sgyIrsDwmPwfZC4hiNidPdPINjeUwNfv5kldczoEAcjl9Y1L3SM7Uz2PUEQzxQw==
-
 spark-md5@^3.0.1:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/spark-md5/-/spark-md5-3.0.2.tgz#7952c4a30784347abcee73268e473b9c0167e3fc"
@@ -8075,10 +8056,10 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
 
-vue-loader@^15.9.6:
-  version "15.9.6"
-  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-15.9.6.tgz#f4bb9ae20c3a8370af3ecf09b8126d38ffdb6b8b"
-  integrity sha512-j0cqiLzwbeImIC6nVIby2o/ABAWhlppyL/m5oJ67R5MloP0hj/DtFgb0Zmq3J9CG7AJ+AXIvHVnJAPBvrLyuDg==
+vue-loader@^15.9.8:
+  version "15.9.8"
+  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-15.9.8.tgz#4b0f602afaf66a996be1e534fb9609dc4ab10e61"
+  integrity sha512-GwSkxPrihfLR69/dSV3+5CdMQ0D+jXg8Ma1S4nQXKJAznYFX14vHdc/NetQc34Dw+rBbIJyP7JOuVb9Fhprvog==
   dependencies:
     "@vue/component-compiler-utils" "^3.1.0"
     hash-sum "^1.0.2"
