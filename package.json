@@ -2,7 +2,7 @@
   "name": "app",
   "private": true,
   "dependencies": {
-    "@rails/actioncable": "^7.0.0",
+    "@rails/actioncable": "^7.0.1",
     "@rails/actiontext": "^7.0.0",
     "@rails/activestorage": "^7.0.0",
     "@rails/ujs": "^6.0.0",
@@ -21,6 +21,6 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^4.7.1"
+    "webpack-dev-server": "^4.7.3"
   }
 }
