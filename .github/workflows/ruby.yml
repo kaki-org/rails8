@@ -54,7 +54,7 @@ jobs:
             analysis-icu
       #MySQLをインストール
       - name: Install dependent libralies
-        run: sudo apt-get install libmysqlclient-dev
+        run: sudo apt-get update -y && sudo apt-get install libmysqlclient-dev
       - name: Verify Elasticsearch connection from host
         env:
           ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
