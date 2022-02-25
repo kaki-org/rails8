@@ -2,21 +2,21 @@ version: '3.7'
 
 services:
   web: &web
-    image: circleci/ruby:3.0.2-node-browsers
-    # build:
-    #   context: .
-    #   dockerfile: ./devenv/web/Dockerfile
+#    image: cimg/ruby:3.1.0-browsers
+    build:
+      context: .
+      dockerfile: ./devenv/web/Dockerfile
     tmpfs:
       - /tmp
     stdin_open: true
     tty: true
     volumes:
-      - .:/app:cached
-      - rails_cache:/app/tmp/cache
+      - .:/home/circleci:cached
+      - rails_cache:/home/circleci/tmp/cache
       - bundle:/usr/local/bundle
     environment:
       BOOTSNAP_CACHE_DIR: '/usr/local/bundle'
-      HISTFILE: '/app/log/.bash_history'
+      HISTFILE: '/home/circleci/log/.bash_history'
       TZ: 'Asia/Tokyo'
       RAILS_ENV: ${RAILS_ENV:-development}
       DATABASE_URL: 'mysql2://root:@db'
@@ -30,7 +30,7 @@ services:
     expose: ["3000"]
     ports:
       - "${WEB_PORT:-53000}:3000"
-    working_dir: /app
+    working_dir: /home/circleci
     user: root
 
   db:

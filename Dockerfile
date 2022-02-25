@@ -1,4 +1,4 @@
-FROM ruby:3.0.2 AS nodejs
+FROM ruby:3.0.3 AS nodejs
 
 WORKDIR /tmp
 
@@ -6,7 +6,7 @@ RUN curl -LO https://nodejs.org/dist/v12.14.1/node-v12.14.1-linux-x64.tar.xz
 RUN tar xvf node-v12.14.1-linux-x64.tar.xz
 RUN mv node-v12.14.1-linux-x64 node
 
-FROM ruby:3.0.2
+FROM ruby:3.0.3
 
 COPY --from=nodejs /tmp/node /opt/node
 ENV PATH /opt/node/bin:$PATH
