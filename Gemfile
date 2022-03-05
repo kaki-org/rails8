@@ -38,6 +38,7 @@ gem 'omniauth-github', '~> 2.0.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
 gem 'rails-i18n', '~> 7.0.3'
 gem 'searchkick', '~> 5.0.2'
+gem 'elasticsearch'
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-lcov', require: false, group: :test
 # gem 'coveralls', require: false, group: :test #メンテされてないみたい
