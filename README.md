@@ -26,7 +26,7 @@ dip rails new .
 # routingを確認する
 
 知らなかったけど、以下でさくっとルーティング情報がわかるみたい。
-http://rails6.lvh.me:53000/rails/info/routes
+http://rails7.lvh.me:53000/rails/info/routes
 
 # h2oでEarly Hintsを試す(※)
 
@@ -73,7 +73,7 @@ h2oを起動する
 
 # Sidekiqを利用する
 
-http://rails6.lvh.me:53000/sidekiq
+http://rails7.lvh.me:53000/sidekiq
 
 FIXME ちょっと謎な動き。
 
@@ -132,8 +132,8 @@ bin/webpack
 # skylight
 
 ```
-teruo.kakikubo@C02DN0TXML87 ~/Documents/rails6 % dip bundle exec skylight setup wfY88nn7tx0p
-Creating rails6_web_run ... done
+teruo.kakikubo@C02DN0TXML87 ~/Documents/rails7 % dip bundle exec skylight setup wfY88nn7tx0p
+Creating rails7_web_run ... done
 W, [2021-03-30T07:47:43.025198 #21]  WARN -- Skylight: [SKYLIGHT] [5.0.1] Running Skylight in development mode. No data will be reported until you deploy your app.
 (To disable this message for all local apps, run `skylight disable_dev_warning`.)
 Running via Spring preloader in process 41
