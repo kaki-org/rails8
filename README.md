@@ -206,4 +206,4 @@ https://github.com/styfle/cancel-workflow-action
 ## 他のユーザが作成したイベントに参加できない
 
 - [x] テストケースを書く
-- [x] 修正する
+- [ ] 修正する
