@@ -1,4 +1,4 @@
-prerelease: true
+publish: true
 name-template: 'v$RESOLVED_VERSION 🌈'
 tag-template: 'v$RESOLVED_VERSION'
 
