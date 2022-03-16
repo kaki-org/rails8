@@ -207,4 +207,3 @@ https://github.com/styfle/cancel-workflow-action
 
 - [x] テストケースを書く
 - [ ] 修正する
-- [x] release drafterなおす
