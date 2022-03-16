@@ -1,5 +1,5 @@
-# rails6
-perfect rails6
+# rails7
+perfect rails7
 
 # 初期構築
 
