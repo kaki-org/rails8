@@ -3,21 +3,24 @@ updates:
 - package-ecosystem: docker
   directory: "/devenv"
   schedule:
-    interval: daily
+    interval: weekly
     time: "06:00"
     timezone: Japan
   open-pull-requests-limit: 10
 - package-ecosystem: bundler
   directory: "/"
   schedule:
-    interval: daily
+    interval: weekly
     time: "06:00"
     timezone: Japan
   open-pull-requests-limit: 10
 - package-ecosystem: npm
   directory: "/"
   schedule:
-    interval: daily
+    interval: weekly
     time: "06:00"
     timezone: Japan
   rebase-strategy: disabled
+  ignore:
+    - dependency-name: "*"
+      update-types: ["version-update:semver-patch"]
