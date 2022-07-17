@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 7.0.2'
+gem 'rails', '~> 7.0.3'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
 # Use Puma as the app server
@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.11'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-gem 'active_storage_validations', '~> 0.9.7'
+gem 'active_storage_validations', '~> 0.9.8'
 gem 'image_processing', '~> 1.12'
 gem 'sidekiq'
 # Reduces boot times through caching; required in config/boot.rb
@@ -33,11 +33,11 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'hamlit-rails', '~> 0.2.3'
 gem 'kaminari', '~> 1.2.2'
-gem 'omniauth', '~> 2.0.4'
+gem 'omniauth', '~> 2.1.0'
 gem 'omniauth-github', '~> 2.0.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
-gem 'rails-i18n', '~> 7.0.3'
-gem 'searchkick', '~> 5.0.3'
+gem 'rails-i18n', '~> 7.0.5'
+gem 'searchkick', '~> 5.0.4'
 gem "opensearch-ruby" # select one
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-lcov', require: false, group: :test
