@@ -221,11 +221,11 @@ GEM
       omniauth (~> 2.0)
     opensearch-api (2.0.2)
       multi_json
-    opensearch-ruby (2.0.2)
+    opensearch-ruby (2.0.3)
       opensearch-api (= 2.0.2)
-      opensearch-transport (= 2.0.0)
-    opensearch-transport (2.0.0)
-      faraday (~> 1)
+      opensearch-transport (~> 2.0.0)
+    opensearch-transport (2.0.1)
+      faraday (>= 1.0, < 3)
       multi_json
     parallel (1.22.1)
     parser (3.1.2.0)
