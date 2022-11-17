@@ -321,7 +321,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    searchkick (5.0.4)
+    searchkick (5.1.0)
       activemodel (>= 5.2)
       hashie
     selenium-webdriver (4.4.0)
@@ -422,7 +422,7 @@ DEPENDENCIES
   rubocop-rspec
   ruby-debug-ide
   sass-rails (>= 6)
-  searchkick (~> 5.0.4)
+  searchkick (~> 5.1.0)
   selenium-webdriver
   sidekiq
   simplecov
