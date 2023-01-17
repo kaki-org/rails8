@@ -36,7 +36,7 @@ gem 'kaminari', '~> 1.2.2'
 gem 'omniauth', '~> 2.1.0'
 gem 'omniauth-github', '~> 2.0.1'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
-gem 'rails-i18n', '~> 7.0.5'
+gem 'rails-i18n', '~> 7.0.6'
 gem 'searchkick', '~> 5.1.0'
 gem "opensearch-ruby" # select one
 gem 'simplecov', require: false, group: :test
