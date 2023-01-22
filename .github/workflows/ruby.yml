@@ -3,15 +3,11 @@ name: Build
 #プルリクエスト作成時に実行(他にもpush時など設定できます)
 on: [ pull_request ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  cancel:
-    name: 'Cancel Previous Runs'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.8.0
-        with:
-          access_token: ${{ github.token }}
   rspec-job:
     #ubuntu環境で動かします
     runs-on: ubuntu-20.04
