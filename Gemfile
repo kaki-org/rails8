@@ -33,11 +33,11 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'hamlit-rails', '~> 0.2.3'
 gem 'kaminari', '~> 1.2.2'
-gem 'omniauth', '~> 2.1.0'
+gem 'omniauth', '~> 2.1.1'
 gem 'omniauth-github', '~> 2.0.1'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
-gem 'rails-i18n', '~> 7.0.5'
-gem 'searchkick', '~> 5.1.0'
+gem 'rails-i18n', '~> 7.0.6'
+gem 'searchkick', '~> 5.1.1'
 gem "opensearch-ruby" # select one
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-lcov', require: false, group: :test
@@ -60,7 +60,7 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
-  gem 'listen', '~> 3.7'
+  gem 'listen', '~> 3.8'
   gem 'rack-mini-profiler', '~> 3.0', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'rspec-rails'
