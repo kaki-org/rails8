@@ -1,10 +1,13 @@
 name: Build
 
 #プルリクエスト作成時に実行(他にもpush時など設定できます)
-on: [ pull_request ]
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+  pull_request:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref_name }}
   cancel-in-progress: true
 
 jobs:
@@ -61,20 +64,6 @@ jobs:
       - name: Setup bundler
         run: gem install bundler
 
-      - name: Cache gems
-        uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gem-
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       - name: bundle install
         run: |
           bundle config set path 'vendor/bundle'
