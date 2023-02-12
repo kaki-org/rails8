@@ -214,7 +214,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (5.0.0)
-    puma (6.0.2)
+    puma (6.1.0)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
@@ -411,7 +411,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection (~> 1.0.1)
   opensearch-ruby
   pry-rails
-  puma (~> 6.0)
+  puma (~> 6.1)
   rack-mini-profiler (~> 3.0)
   rails (~> 7.0.4)
   rails-i18n (~> 7.0.6)
