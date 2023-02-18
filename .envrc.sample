@@ -1,0 +1,2 @@
+MYSQL_PORT=13306
+MYSQL_HOST=rails-db.lvh.me

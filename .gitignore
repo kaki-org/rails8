@@ -78,3 +78,5 @@ yarn-debug.log*
 /.idea/*
 .DS_Store
 .rubygems
+
+.envrc
