@@ -1,17 +1,62 @@
-FROM ruby:3.2.1-slim-bullseye
-RUN apt-get update -qq && apt-get install -y libvips-dev build-essential default-libmysqlclient-dev curl libssl-dev zlib1g-dev unzip
-RUN curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
-RUN echo "deb https://deb.nodesource.com/node_16.x bullseye main" | tee /etc/apt/sources.list.d/nodesource.list
-RUN apt-get update -qq && apt-get install -y nodejs
+# ビルド用コンテナ
+ARG IMAGE_FILE
+FROM $IMAGE_FILE:3.2.1-alpine3.171 AS builder
+RUN apk --update --no-cache add --virtual build-dependencies \
+    build-base \
+    git \
+    make \
+    gcc \
+    g++ \
+    gcompat \
+    zlib-dev \
+    libffi-dev \
+    readline-dev \
+    libxml2-dev \
+    libxslt-dev
+RUN apk --update --no-cache add \
+    bash \
+    yarn \
+    mariadb-client \
+    mariadb-dev \
+    imagemagick \
+    tzdata
+ENV APP_PATH /work/app
+WORKDIR $APP_PATH
 
-WORKDIR /home/app
-COPY Gemfile /home/app/Gemfile
-COPY Gemfile.lock /home/app/Gemfile.lock
-ARG BUNDLER_VERSION
-RUN gem update --system &&\
-    gem install bundler:$BUNDLER_VERSION &&\
-    bundle config set force_ruby_platform true && \
-    bundle install --full-index -j4 --retry 6 --no-cache
-COPY . /home/app
+COPY Gemfile $APP_PATH
+COPY Gemfile.lock $APP_PATH
+RUN gem update bundler \
+    && bundle config set force_ruby_platform true \
+    && bundle install --jobs `expr $(cat /proc/cpuinfo | grep -c "cpu cores") - 1` --retry 3 \
+    && apk del build-dependencies # --virtual でグルーピングしたpackageを削除
+RUN rm -rf /usr/local/bundle/cache/*
 
-ENV LANG C.UTF-8
+FROM ${IMAGE_FILE}:3.2.1-alpine3.17
+    RUN apk --no-cache add \
+    build-base \
+    bash \
+    file \
+    make \
+    curl \
+    gcompat \
+    gcc \
+    libffi-dev \
+    yarn \
+    readline-dev \
+    libxml2-dev \
+    libxslt-dev \
+    nodejs \
+    mariadb-client \
+    mariadb-dev \
+    nodejs \
+    npm \
+    imagemagick  \
+    tzdata
+RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+ENV APP_PATH /work/app
+WORKDIR $APP_PATH
+COPY . $APP_PATH
+COPY --from=builder /usr/local/bundle /usr/local/bundle
+
+CMD ["bin/rails", "s"]

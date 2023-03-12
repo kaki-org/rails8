@@ -43,7 +43,7 @@ gem 'simplecov', require: false, group: :test
 gem 'simplecov-lcov', require: false, group: :test
 # gem 'coveralls', require: false, group: :test #メンテされてないみたい
 # gem 'coveralls_reborn', '~> 0.21.0', require: false
-gem 'skylight'
+# gem 'skylight'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -67,7 +67,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
-  gem 'ruby-debug-ide'
+  # gem 'ruby-debug-ide'
   gem 'spring'
 end
 
