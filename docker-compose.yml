@@ -24,7 +24,7 @@ services:
       RAILS_ENV: ${RAILS_ENV:-development}
       DATABASE_URL: 'mysql2://root:@db'
       REDIS_URL: ${REDIS_URL:-redis://redis:6379}
-      ELASTIC_SEARCH_URL: ${ELASTIC_SEARCH_URL:-http://elasticsearch:9200}
+      ELASTICSEARCH_URL: ${ELASTICSEARCH_URL:-http://elasticsearch:9200}
       BUNDLER_VERSION: '2.4.8'
     depends_on:
       - db
@@ -91,6 +91,9 @@ services:
       http.port: "9200"
       discovery.type: "single-node"
       ES_JAVA_OPTS: '-Xms256m -Xmx256m'
+      DISABLE_INSTALL_DEMO_CONFIG: true
+      node.name: "elasticsearch"
+      DISABLE_SECURITY_PLUGIN: true
       xpack.security.enabled: false
       #entrypoint: >
       #  bash -c "bin/elasticsearch-plugin install analysis-kuromoji &&
