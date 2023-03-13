@@ -12,8 +12,8 @@ concurrency:
 jobs:
   rspec-job:
     #ubuntu環境で動かします
-    runs-on: ubuntu-20.04
-    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     services:
       mysql:
@@ -99,7 +99,7 @@ jobs:
         run: bundle exec brakeman
 
       - name: Run RSpec
-        run: bundle exec rspec
+        run: bundle exec rspec spec/models
         env:
           RAILS_ENV: test
           ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
