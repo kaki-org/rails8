@@ -14,6 +14,8 @@ jobs:
     #ubuntu環境で動かします
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      RAILS_ENV: test
 
     services:
       mysql:
@@ -63,9 +65,9 @@ jobs:
         uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
         with:
           stack-version: 7.17.9
-          plugins:
-            - analysis-kuromoji
-            - analysis-icu
+          plugins: |
+            analysis-kuromoji
+            analysis-icu
       #MySQLをインストール
       - name: Install dependent libralies
         run: sudo apt-get update -y && sudo apt-get install libmysqlclient-dev
@@ -92,8 +94,6 @@ jobs:
           bundle exec rake db:create
           bundle exec rake db:migrate
           # bundle exec rake db:schema:load
-        env:
-          RAILS_ENV: test
 
       - name: Run Brakeman
         run: bundle exec brakeman
@@ -101,7 +101,6 @@ jobs:
       - name: Run RSpec
         run: bundle exec rspec
         env:
-          RAILS_ENV: test
           ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
       - name: Codecov
         uses: codecov/codecov-action@v2.1.0
