@@ -80,3 +80,6 @@ yarn-debug.log*
 .rubygems
 
 .envrc
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

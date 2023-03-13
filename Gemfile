@@ -13,8 +13,6 @@ gem 'mysql2', '~> 0.5'
 gem 'puma', '~> 6.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.4'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -41,6 +39,13 @@ gem 'searchkick', '~> 5.2.0'
 gem "opensearch-ruby" # select one
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-lcov', require: false, group: :test
+
+gem 'jsbundling-rails'
+gem 'sprockets-rails'
+gem 'importmap-rails'
+gem 'turbo-rails'
+gem 'stimulus-rails'
+
 # gem 'coveralls', require: false, group: :test #メンテされてないみたい
 # gem 'coveralls_reborn', '~> 0.21.0', require: false
 # gem 'skylight'
