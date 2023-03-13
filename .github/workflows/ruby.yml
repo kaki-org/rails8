@@ -31,12 +31,12 @@ jobs:
           - 9200/tcp
         env:
           discovery.type: single-node
-        options: >-
-          --health-cmd 'curl http://localhost:9200/_cluster/health'
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 3
-#        -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
+        options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
+#        options: >-
+#          --health-cmd 'curl http://localhost:9200/_cluster/health'
+#          --health-interval 10s
+#          --health-timeout 5s
+#          --health-retries 3
 #      chrome:
 #        image: selenium/standalone-chrome
 #        ports:
