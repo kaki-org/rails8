@@ -61,14 +61,18 @@ jobs:
           sudo sysctl -w vm.swappiness=1
           sudo sysctl -w fs.file-max=262144
           sudo sysctl -w vm.max_map_count=262144
-      - name: Runs Elasticsearch
-        uses: elastic/elastic-github-actions/elasticsearch@master
-        with:
-          stack-version: 7.17.9
-          plugins: |
-            analysis-kuromoji
-            analysis-icu
-#      - name: Run Elasticsearch
+      - name: install Elasticsearch Plugin
+        run: |
+          sudo bin/elasticsearch-plugin install analysis-kuromoji
+          sudo bin/elasticsearch-plugin install analysis-icu
+#      - name: Runs Elasticsearch
+#        uses: elastic/elastic-github-actions/elasticsearch@master
+#        with:
+#          stack-version: 7.17.9
+#          plugins: |
+#            analysis-kuromoji
+#            analysis-icu
+##      - name: Run Elasticsearch
 #        uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
 #        with:
 #          stack-version: 7.10.1
