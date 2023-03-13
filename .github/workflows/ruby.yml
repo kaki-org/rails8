@@ -63,9 +63,9 @@ jobs:
         uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
         with:
           stack-version: 7.17.9
-          plugins: |
-            analysis-kuromoji
-            analysis-icu
+          plugins:
+            - analysis-kuromoji
+            - analysis-icu
       #MySQLをインストール
       - name: Install dependent libralies
         run: sudo apt-get update -y && sudo apt-get install libmysqlclient-dev
