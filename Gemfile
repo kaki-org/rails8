@@ -13,10 +13,6 @@ gem 'mysql2', '~> 0.5'
 gem 'puma', '~> 6.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.4'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.11'
 # Use Redis adapter to run Action Cable in production
@@ -37,13 +33,20 @@ gem 'omniauth', '~> 2.1.1'
 gem 'omniauth-github', '~> 2.0.1'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
 gem 'rails-i18n', '~> 7.0.6'
-gem 'searchkick', '~> 5.2.0'
+gem 'searchkick', '~> 5.2.1'
 gem "opensearch-ruby" # select one
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-lcov', require: false, group: :test
+
+gem 'jsbundling-rails'
+gem 'sprockets-rails'
+gem 'importmap-rails'
+gem 'turbo-rails'
+gem 'stimulus-rails'
+
 # gem 'coveralls', require: false, group: :test #メンテされてないみたい
 # gem 'coveralls_reborn', '~> 0.21.0', require: false
-gem 'skylight'
+# gem 'skylight'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -67,7 +70,7 @@ group :development do
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
-  gem 'ruby-debug-ide'
+  # gem 'ruby-debug-ide'
   gem 'spring'
 end
 
