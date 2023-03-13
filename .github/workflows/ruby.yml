@@ -27,8 +27,17 @@ jobs:
       elasticsearch:
         image: elasticsearch:7.17.9
         ports:
-          - 9200/tcp
-        options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
+          - 9200:9200
+          - 9300:9300
+        env:
+          discovery.type: single-node
+        options: >-
+          --health-cmd 'curl http://localhost:9200/_cluster/health'
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+        entrypoints:
+#        -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
 #      chrome:
 #        image: selenium/standalone-chrome
 #        ports:
@@ -61,10 +70,10 @@ jobs:
           sudo sysctl -w vm.swappiness=1
           sudo sysctl -w fs.file-max=262144
           sudo sysctl -w vm.max_map_count=262144
-      - name: install Elasticsearch Plugin
-        run: |
-          sudo bin/elasticsearch-plugin install analysis-kuromoji
-          sudo bin/elasticsearch-plugin install analysis-icu
+#      - name: install Elasticsearch Plugin
+#        run: |
+#          sudo bin/elasticsearch-plugin install analysis-kuromoji
+#          sudo bin/elasticsearch-plugin install analysis-icu
 #      - name: Runs Elasticsearch
 #        uses: elastic/elastic-github-actions/elasticsearch@master
 #        with:
@@ -72,13 +81,14 @@ jobs:
 #          plugins: |
 #            analysis-kuromoji
 #            analysis-icu
-##      - name: Run Elasticsearch
-#        uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
-#        with:
-#          stack-version: 7.10.1
-#          plugins: |
-#            analysis-kuromoji
-#            analysis-icu
+      - name: Run Elasticsearch
+        uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
+        with:
+          stack-version: 7.10.1
+          security-enabled: false
+          plugins: |
+            analysis-kuromoji
+            analysis-icu
       #MySQLをインストール
       - name: Install dependent libralies
         run: sudo apt-get update -y && sudo apt-get install libmysqlclient-dev
