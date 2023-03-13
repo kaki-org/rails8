@@ -47,6 +47,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.1
+          bundler-cache: true
       # elasticsearch起動用に必要
       - name: Configure sysctl limits
         run: |
