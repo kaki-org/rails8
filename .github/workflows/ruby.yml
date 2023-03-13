@@ -99,7 +99,9 @@ jobs:
         run: bundle exec brakeman
 
       - name: Run RSpec
-        run: bundle exec rspec
+        run: |
+          bundle exec rails r "Event.reindex"
+          bundle exec rspec
         env:
           ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
       - name: Codecov
