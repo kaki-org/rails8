@@ -35,9 +35,16 @@ jobs:
 
     # https://github.com/ruby/setup-ruby
     steps:
-      - uses: actions/checkout@v3
+      - name: checkout
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: actions/checkout@v3
+      - name: checkout pr
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Setup Ruby version
-        uses: ruby/setup-ruby@master
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.1
       # elasticsearch起動用に必要
