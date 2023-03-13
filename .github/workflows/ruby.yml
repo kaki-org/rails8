@@ -65,9 +65,9 @@ jobs:
         uses: elastic/elastic-github-actions/elasticsearch@master
         with:
           stack-version: 7.17.9
-          plugins:
-            - analysis-kuromoji
-            - analysis-icu
+          plugins: |
+            analysis-kuromoji
+            analysis-icu
 #      - name: Run Elasticsearch
 #        uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
 #        with:
