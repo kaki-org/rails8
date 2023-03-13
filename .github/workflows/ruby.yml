@@ -13,11 +13,18 @@ jobs:
   rspec-job:
     #ubuntu環境で動かします
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     env:
       RAILS_ENV: test
+      ELASTIC_SEARCH_URL: http://127.0.0.1:9200
+      # ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
 
     services:
+      chrome:
+        image: selenium/standalone-chrome
+        ports:
+          - 4444:4444
+          - 5900:5900
       mysql:
         image: mysql:8.0
         ports:
@@ -38,11 +45,6 @@ jobs:
       #     --health-timeout 5s
       #     --health-retries 3
       # 起動数が多すぎるせいか rspec が動かなくなるので一旦停止させたサービス
-      # chrome:
-      #   image: selenium/standalone-chrome
-      #   ports:
-      #     - 4444:4444
-      #     - 5900:5900
 
     # https://github.com/ruby/setup-ruby
     steps:
@@ -70,16 +72,9 @@ jobs:
           sudo sysctl -w vm.swappiness=1
           sudo sysctl -w fs.file-max=262144
           sudo sysctl -w vm.max_map_count=262144
-      #- name: Runs Elasticsearch
-      #  uses: elastic/elastic-github-actions/elasticsearch@master
-      #  with:
-      #    stack-version: 7.17.9
-      #    security-enabled: false
-      #    plugins: |
-      #      analysis-kuromoji
-      #      analysis-icu
       - name: Run Elasticsearch
         uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
+        #  uses: elastic/elastic-github-actions/elasticsearch@master
         with:
           stack-version: 7.17.9
           security-enabled: false
@@ -90,17 +85,9 @@ jobs:
       - name: Install dependent libralies
         run: sudo apt-get update -y && sudo apt-get install libmysqlclient-dev
       - name: Verify Elasticsearch connection from host
-        env:
-          ELASTIC_SEARCH_URL: http://127.0.0.1:9200
-          # ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
         run: |
           echo $ELASTIC_SEARCH_URL
           curl -fsSL "$ELASTIC_SEARCH_URL/_cat/health?h=status"
-      # - name: check elastic-search plugin
-      #   env:
-      #     ELASTIC_SEARCH_URL: http://127.0.0.1:9200
-      #     # ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
-      #   run: |
       #     curl -X GET "$ELASTIC_SEARCH_URL/_nodes/plugins?pretty"
 
       - name: Setup bundler
@@ -125,11 +112,7 @@ jobs:
 
       - name: Run RSpec
         run: |
-          bundle exec rails r "Event.reindex"
           bundle exec rspec
-        env:
-          ELASTIC_SEARCH_URL: http://127.0.0.1:9200
-#          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
       - name: Codecov
         uses: codecov/codecov-action@v2.1.0
         with:
