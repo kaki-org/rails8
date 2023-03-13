@@ -32,13 +32,6 @@ jobs:
         env:
           discovery.type: single-node
         options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
-        volumes:
-          - ./install-plugin.sh:/tmp/install-plugin.sh
-        entrypoint: >
-          bash -c "chmod +x /tmp/install-plugin.sh &&
-                  /tmp/instal-plugin.sh analysis-kuromoji &&
-                  /tmp/instal-plugin.sh analysis-icu &&
-                  docker-entrypoint.sh"
 #        options: >-
 #          --health-cmd 'curl http://localhost:9200/_cluster/health'
 #          --health-interval 10s
