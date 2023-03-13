@@ -78,6 +78,8 @@ jobs:
           echo $ELASTIC_SEARCH_URL
           curl -fsSL "$ELASTIC_SEARCH_URL/_cat/health?h=status"
       - name: check elastic-search plugin
+        env:
+          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
         run: |
           curl -X GET "$ELASTIC_SEARCH_URL/_nodes/plugins?pretty"
 
