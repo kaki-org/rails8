@@ -73,21 +73,22 @@ jobs:
 #        run: |
 #          sudo bin/elasticsearch-plugin install analysis-kuromoji
 #          sudo bin/elasticsearch-plugin install analysis-icu
-#      - name: Runs Elasticsearch
-#        uses: elastic/elastic-github-actions/elasticsearch@master
-#        with:
-#          stack-version: 7.17.9
-#          plugins: |
-#            analysis-kuromoji
-#            analysis-icu
-      - name: Run Elasticsearch
-        uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
+      - name: Runs Elasticsearch
+        uses: elastic/elastic-github-actions/elasticsearch@master
         with:
-          stack-version: 7.10.1
+          stack-version: 7.17.9
           security-enabled: false
           plugins: |
             analysis-kuromoji
             analysis-icu
+#      - name: Run Elasticsearch
+#        uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
+#        with:
+#          stack-version: 7.17.9
+#          security-enabled: false
+#          plugins: |
+#            analysis-kuromoji
+#            analysis-icu
       #MySQLをインストール
       - name: Install dependent libralies
         run: sudo apt-get update -y && sudo apt-get install libmysqlclient-dev
