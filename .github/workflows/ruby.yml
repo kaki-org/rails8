@@ -20,6 +20,11 @@ jobs:
       # ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
 
     services:
+      chrome:
+        image: selenium/standalone-chrome
+        ports:
+          - 4444:4444
+          - 5900:5900
       mysql:
         image: mysql:8.0
         ports:
@@ -40,11 +45,6 @@ jobs:
       #     --health-timeout 5s
       #     --health-retries 3
       # 起動数が多すぎるせいか rspec が動かなくなるので一旦停止させたサービス
-       chrome:
-         image: selenium/standalone-chrome
-         ports:
-           - 4444:4444
-           - 5900:5900
 
     # https://github.com/ruby/setup-ruby
     steps:
