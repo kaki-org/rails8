@@ -2,41 +2,52 @@ name: Build
 
 #プルリクエスト作成時に実行(他にもpush時など設定できます)
 on:
-  pull_request_target:
-    types: [opened, reopened, synchronize]
   pull_request:
+    types: [opened, reopened, synchronize]
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref_name }}
+  group: rails7-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 
 jobs:
   rspec-job:
     #ubuntu環境で動かします
     runs-on: ubuntu-20.04
+    timeout-minutes: 10
 
     services:
       mysql:
-        image: mysql:5.7
+        image: mysql:8.0
         ports:
           - 3306:3306
         env:
           MYSQL_ROOT_PASSWORD: root
       elasticsearch:
-        image: elasticsearch:7.10.1
+        image: elasticsearch:7.17.9
         ports:
           - 9200/tcp
         options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
+      chrome:
+        image: selenium/standalone-chrome
+        ports:
+          - 4444:4444
+          - 5900:5900
 
     # https://github.com/ruby/setup-ruby
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: actions/checkout@v3
+      - name: checkout pr
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Setup Ruby version
-        uses: ruby/setup-ruby@master
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.1
-        env:
-         ImageOS: ubuntu18
+          bundler-cache: true
       # elasticsearch起動用に必要
       - name: Configure sysctl limits
         run: |
@@ -47,7 +58,7 @@ jobs:
       - name: Run Elasticsearch
         uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
         with:
-          stack-version: 7.10.1
+          stack-version: 7.17.9
           plugins: |
             analysis-kuromoji
             analysis-icu
