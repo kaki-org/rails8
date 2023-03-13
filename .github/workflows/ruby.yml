@@ -94,13 +94,15 @@ jobs:
         run: sudo apt-get update -y && sudo apt-get install libmysqlclient-dev
       - name: Verify Elasticsearch connection from host
         env:
-          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
+          ELASTIC_SEARCH_URL: http://127.0.0.1:9200
+#          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
         run: |
           echo $ELASTIC_SEARCH_URL
           curl -fsSL "$ELASTIC_SEARCH_URL/_cat/health?h=status"
       - name: check elastic-search plugin
         env:
-          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
+          ELASTIC_SEARCH_URL: http://127.0.0.1:9200
+#          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
         run: |
           curl -X GET "$ELASTIC_SEARCH_URL/_nodes/plugins?pretty"
 
@@ -129,7 +131,8 @@ jobs:
           bundle exec rails r "Event.reindex"
           bundle exec rspec
         env:
-          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
+          ELASTIC_SEARCH_URL: http://127.0.0.1:9200
+#          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
       - name: Codecov
         uses: codecov/codecov-action@v2.1.0
         with:
