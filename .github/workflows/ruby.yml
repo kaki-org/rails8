@@ -39,8 +39,6 @@ jobs:
         uses: ruby/setup-ruby@master
         with:
           ruby-version: 3.2.1
-        env:
-         ImageOS: ubuntu18
       # elasticsearch起動用に必要
       - name: Configure sysctl limits
         run: |
