@@ -12,8 +12,10 @@ concurrency:
 jobs:
   rspec-job:
     #ubuntu環境で動かします
-    runs-on: ubuntu-20.04
-    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      RAILS_ENV: test
 
     services:
       mysql:
@@ -22,16 +24,24 @@ jobs:
           - 3306:3306
         env:
           MYSQL_ROOT_PASSWORD: root
-      elasticsearch:
-        image: elasticsearch:7.17.9
-        ports:
-          - 9200/tcp
-        options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
-      chrome:
-        image: selenium/standalone-chrome
-        ports:
-          - 4444:4444
-          - 5900:5900
+#      elasticsearch:
+##        image: elasticsearch:7.17.9
+#        image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
+#        ports:
+#          - 9200:9200
+#        env:
+#          discovery.type: single-node
+#        options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
+#        options: >-
+#          --health-cmd 'curl http://localhost:9200/_cluster/health'
+#          --health-interval 10s
+#          --health-timeout 5s
+#          --health-retries 3
+#      chrome:
+#        image: selenium/standalone-chrome
+#        ports:
+#          - 4444:4444
+#          - 5900:5900
 
     # https://github.com/ruby/setup-ruby
     steps:
@@ -48,6 +58,10 @@ jobs:
         with:
           ruby-version: 3.2.1
           bundler-cache: true
+      - name: Use Node.js 16.19.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.19.0
       # elasticsearch起動用に必要
       - name: Configure sysctl limits
         run: |
@@ -55,22 +69,42 @@ jobs:
           sudo sysctl -w vm.swappiness=1
           sudo sysctl -w fs.file-max=262144
           sudo sysctl -w vm.max_map_count=262144
-      - name: Run Elasticsearch
-        uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
+#      - name: install Elasticsearch Plugin
+#        run: |
+#          sudo bin/elasticsearch-plugin install analysis-kuromoji
+#          sudo bin/elasticsearch-plugin install analysis-icu
+      - name: Runs Elasticsearch
+        uses: elastic/elastic-github-actions/elasticsearch@master
         with:
           stack-version: 7.17.9
+          security-enabled: false
           plugins: |
             analysis-kuromoji
             analysis-icu
+#      - name: Run Elasticsearch
+#        uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
+#        with:
+#          stack-version: 7.17.9
+#          security-enabled: false
+#          plugins: |
+#            analysis-kuromoji
+#            analysis-icu
       #MySQLをインストール
       - name: Install dependent libralies
         run: sudo apt-get update -y && sudo apt-get install libmysqlclient-dev
       - name: Verify Elasticsearch connection from host
         env:
-          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
+          ELASTIC_SEARCH_URL: http://127.0.0.1:9200
+#          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
         run: |
           echo $ELASTIC_SEARCH_URL
           curl -fsSL "$ELASTIC_SEARCH_URL/_cat/health?h=status"
+      - name: check elastic-search plugin
+        env:
+          ELASTIC_SEARCH_URL: http://127.0.0.1:9200
+#          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
+        run: |
+          curl -X GET "$ELASTIC_SEARCH_URL/_nodes/plugins?pretty"
 
       - name: Setup bundler
         run: gem install bundler
@@ -88,19 +122,17 @@ jobs:
           bundle exec rake db:create
           bundle exec rake db:migrate
           # bundle exec rake db:schema:load
-        env:
-          RAILS_ENV: test
 
       - name: Run Brakeman
         run: bundle exec brakeman
 
       - name: Run RSpec
         run: |
+          bundle exec rails r "Event.reindex"
           bundle exec rspec
-          # COVERALLS_REPO_TOKEN=yjNHgYTiSexVwmLVvYzNdMj2CQem4Etvv bundle exec coveralls push
         env:
-          RAILS_ENV: test
-          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
+          ELASTIC_SEARCH_URL: http://127.0.0.1:9200
+#          ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
       - name: Codecov
         uses: codecov/codecov-action@v2.1.0
         with:

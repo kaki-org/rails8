@@ -195,12 +195,6 @@ dip rspec
 open coverage/index.html
 ```
 
-# キャンセルワークフロー
-
-これを使えばpushが重なった場合にでも処理をキャンセルできる
-https://github.com/styfle/cancel-workflow-action
-
-
 # FIXME
 
 ## 他のユーザが作成したイベントに参加できない
