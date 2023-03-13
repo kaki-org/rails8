@@ -25,7 +25,7 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: root
       elasticsearch:
-        image: elasticsearch:7.10.1
+        image: elasticsearch:7.17.9
         ports:
           - 9200/tcp
         options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
@@ -61,13 +61,20 @@ jobs:
           sudo sysctl -w vm.swappiness=1
           sudo sysctl -w fs.file-max=262144
           sudo sysctl -w vm.max_map_count=262144
-      - name: Run Elasticsearch
-        uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
+      - name: Runs Elasticsearch
+        uses: elastic/elastic-github-actions/elasticsearch@master
         with:
-          stack-version: 7.10.1
-          plugins: |
-            analysis-kuromoji
-            analysis-icu
+          stack-version: 7.17.9
+          plugins:
+            - analysis-kuromoji
+            - analysis-icu
+#      - name: Run Elasticsearch
+#        uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
+#        with:
+#          stack-version: 7.10.1
+#          plugins: |
+#            analysis-kuromoji
+#            analysis-icu
       #MySQLをインストール
       - name: Install dependent libralies
         run: sudo apt-get update -y && sudo apt-get install libmysqlclient-dev
