@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "^7.21.0",
-    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-env": "^7.21.4",
     "@hotwired/turbo-rails": "^7.1.0",
     "@rails/actioncable": "^7.0.2",
     "@rails/actiontext": "^7.0.2",
