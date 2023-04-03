@@ -10,7 +10,7 @@ gem 'rails', '~> 7.0.4'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
 # Use Puma as the app server
-gem 'puma', '~> 6.1'
+gem 'puma', '~> 6.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -33,7 +33,7 @@ gem 'omniauth', '~> 2.1.1'
 gem 'omniauth-github', '~> 2.0.1'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
 gem 'rails-i18n', '~> 7.0.6'
-gem 'searchkick', '~> 5.2.1'
+gem 'searchkick', '~> 5.2.2'
 gem "opensearch-ruby" # select one
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-lcov', require: false, group: :test
