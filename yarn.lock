@@ -1815,7 +1815,7 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
-json5@^2.1.2, json5@^2.2.2:
+json5@^2.2.2:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
   integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
@@ -1843,15 +1843,6 @@ loader-utils@^1.1.0:
     big.js "^5.2.2"
     emojis-list "^3.0.0"
     json5 "^1.0.1"
-
-loader-utils@^2.0.0:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-2.0.4.tgz#8b5cb38b5c34a9a018ee1fc0e6a066d1dfcc528c"
-  integrity sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw==
-  dependencies:
-    big.js "^5.2.2"
-    emojis-list "^3.0.0"
-    json5 "^2.1.2"
 
 locate-path@^5.0.0:
   version "5.0.0"
@@ -2319,14 +2310,14 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-vue-loader@^17.0.0:
-  version "17.0.1"
-  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-17.0.1.tgz#c0ee8875e0610a0c2d13ba9b4d50a9c8442e7a3a"
-  integrity sha512-/OOyugJnImKCkAKrAvdsWMuwoCqGxWT5USLsjohzWbMgOwpA5wQmzQiLMzZd7DjhIfunzAGIApTOgIylz/kwcg==
+vue-loader@^17.1.0:
+  version "17.1.0"
+  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-17.1.0.tgz#f48c1f4d416e905b098bc250e2e8ae1c4acc43f7"
+  integrity sha512-zAjrT+TNWTpgRODxqDfzbDyvuTf5kCP9xmMk8aspQKuYNnTY2r0XK/bHu1DKLpSpk0I6fkQph5OLKB7HcRIPZw==
   dependencies:
     chalk "^4.1.0"
     hash-sum "^2.0.0"
-    loader-utils "^2.0.0"
+    watchpack "^2.4.0"
 
 vue-template-compiler@^2.7.0:
   version "2.7.14"
