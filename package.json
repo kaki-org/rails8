@@ -18,7 +18,7 @@
     "stimulus": "^3.2.1",
     "trix": "^1.2.0",
     "turbolinks": "^5.2.0",
-    "vue": "^3.2.31",
+    "vue": "^3.3.2",
     "vue-loader": "^17.1.0",
     "vue-template-compiler": "^2.7.0",
     "webpack": "^5.82.0",
