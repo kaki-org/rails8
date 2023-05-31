@@ -2,7 +2,7 @@
   "name": "app",
   "private": true,
   "dependencies": {
-    "@babel/core": "^7.21.0",
+    "@babel/core": "^7.22.1",
     "@babel/preset-env": "^7.21.4",
     "@hotwired/turbo-rails": "^7.1.0",
     "@rails/actioncable": "^7.0.2",
