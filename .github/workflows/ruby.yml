@@ -61,10 +61,10 @@ jobs:
         with:
           ruby-version: 3.2.2
           bundler-cache: true
-      - name: Use Node.js 16.19.0
+      - name: Use Node.js 18.16.0
         uses: actions/setup-node@v3
         with:
-          node-version: 16.19.0
+          node-version: 18.16.0
       # elasticsearch起動用に必要
       - name: Configure sysctl limits
         run: |
