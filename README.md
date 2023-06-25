@@ -114,20 +114,12 @@ dip up worker
 dip rails g bullet:install
 ```
 
-# webpacker
+# webpack
 
 きちんとやっておこう
 ```
-dip rails webpacker:install
+dip rails assets:precompile
 ```
-
-これでcssやjsがきちんと読み込まれないときは
-```ruby
-rm -rf publick/packs/*
-bin/webpack
-```
-
-を実行してみる
 
 # skylight
 
