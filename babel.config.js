@@ -66,11 +66,17 @@ module.exports = function(api) {
         }
       ],
       [
-        '@babel/plugin-proposal-private-methods',
+        '@babel/plugin-transform-private-property-in-object',
         {
-          "loose": true
+          loose: true
         }
       ],
+      [
+        '@babel/plugin-proposal-private-methods',
+        {
+          loose: true
+        }
+      ]
     ].filter(Boolean)
   }
 }

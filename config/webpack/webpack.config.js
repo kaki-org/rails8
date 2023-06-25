@@ -13,7 +13,7 @@ module.exports = {
   entry: {
     application: [
       "./app/javascript/application_legacy.js",
-      './app/assets/stylesheets/application.css',
+      './app/assets/stylesheets/application.scss',
     ],
   },
   module: {
