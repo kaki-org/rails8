@@ -24,3 +24,15 @@ updates:
   ignore:
     - dependency-name: "*"
       update-types: ["version-update:semver-patch"]
+- package-ecosystem: github-actions
+  directory: '/'
+  schedule:
+    interval: daily
+    time: '00:00'
+  open-pull-requests-limit: 10
+  commit-message:
+    prefix: fix
+    prefix-development: chore
+    include: scope
+  labels:
+    - "dependencies"
