@@ -29,7 +29,7 @@ RSpec.describe 'Welcomes', type: :request do
       end
       before do
         Event.reindex
-        get root_path, params: params
+        get root_path, params:
       end
       it '2件だけかえってくる' do
         expect(response).to be_successful

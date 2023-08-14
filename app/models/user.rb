@@ -14,7 +14,7 @@ class User < ApplicationRecord
     nickname = auth_hash[:info][:nickname]
     image_url = auth_hash[:info][:image]
 
-    User.find_or_create_by!(provider: provider, uid: uid) do |user|
+    User.find_or_create_by!(provider:, uid:) do |user|
       user.name = nickname
       user.image_url = image_url
     end
@@ -24,8 +24,8 @@ class User < ApplicationRecord
 
   def check_all_events_finished
     now = Time.zone.now
-    errors.add(:base, '公開中の未終了イベントが存在します') if created_events.where(':now < end_at', now: now).exists?
-    errors.add(:base, '未終了の参加イベントが存在します') if participating_events.where(':now < end_at', now: now).exists?
+    errors.add(:base, '公開中の未終了イベントが存在します') if created_events.where(':now < end_at', now:).exists?
+    errors.add(:base, '未終了の参加イベントが存在します') if participating_events.where(':now < end_at', now:).exists?
 
     throw(:abort) unless errors.empty?
   end
