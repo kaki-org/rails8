@@ -9,8 +9,8 @@ RSpec.describe Ticket, type: :model do
     context '正常系' do
       it 'バリデーションを通過すること' do
         ticket = described_class.new(
-          user: user,
-          event: event,
+          user:,
+          event:,
           comment: SecureRandom.alphanumeric((0..30).to_a.sample)
         )
         expect(ticket).to be_valid
@@ -18,7 +18,7 @@ RSpec.describe Ticket, type: :model do
       it 'ユーザが紐付いていなくてもバリデーションは通過すること' do
         ticket = described_class.new(
           user: nil,
-          event: event,
+          event:,
           comment: SecureRandom.alphanumeric((0..30).to_a.sample)
         )
         expect(ticket).to be_valid
@@ -27,8 +27,8 @@ RSpec.describe Ticket, type: :model do
     context '異常系' do
       it 'バリデーションを通過しないこと' do
         ticket = described_class.new(
-          user: user,
-          event: event,
+          user:,
+          event:,
           comment: SecureRandom.alphanumeric(31)
         )
         expect(ticket).not_to be_valid

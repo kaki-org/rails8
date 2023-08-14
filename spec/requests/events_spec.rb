@@ -69,11 +69,11 @@ RSpec.describe 'Events', type: :request do
           }
         end
         before do
-          post events_path, params: params
+          post events_path, params:
         end
         it '正しく作成される' do
           expect do
-            post events_path, params: params
+            post events_path, params:
           end.to change { Event.count }.by(1)
         end
       end
@@ -117,7 +117,7 @@ RSpec.describe 'Events', type: :request do
     context '自分がつくったイベントは' do
       before do
         sign_in_as event_owner
-        patch event_path(id: event.id), params: params
+        patch event_path(id: event.id), params:
       end
       it '更新が成功すること' do
         event.reload
@@ -130,7 +130,7 @@ RSpec.describe 'Events', type: :request do
       end
       it '更新が失敗すること' do
         expect do
-          patch event_path(id: event.id), params: params
+          patch event_path(id: event.id), params:
         end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
