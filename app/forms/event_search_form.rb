@@ -11,7 +11,7 @@ class EventSearchForm
     Event.search(
       keyword_for_search,
       where: { start_at: { gt: start_at } },
-      page: page,
+      page:,
       per_page: 10
     )
   end

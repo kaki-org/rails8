@@ -27,7 +27,7 @@ RSpec.describe 'Tickets', type: :request do
   end
   describe '#create' do
     let(:owner) { create(:user) }
-    let(:event) { create(:event, owner: owner) }
+    let(:event) { create(:event, owner:) }
     let(:user) { create(:user) }
     let(:params) do
       {
@@ -38,11 +38,11 @@ RSpec.describe 'Tickets', type: :request do
     end
     describe '未ログイン状態' do
       before do
-        post event_tickets_path(event), params: params
+        post event_tickets_path(event), params:
       end
       it 'リダイレクトされる' do
         expect do
-          post event_tickets_path(event), params: params
+          post event_tickets_path(event), params:
         end.to change { Ticket.all.size }.by(0)
         expect(response.status).to eq 302
       end
@@ -53,7 +53,7 @@ RSpec.describe 'Tickets', type: :request do
       end
       it 'イベントに参加できる' do
         expect do
-          post event_tickets_path(event), params: params
+          post event_tickets_path(event), params:
         end.to change { Ticket.all.size }.by(1)
         expect(response.status).to eq 302
       end
@@ -61,9 +61,9 @@ RSpec.describe 'Tickets', type: :request do
   end
   describe '#destroy' do
     let(:owner) { create(:user) }
-    let(:event) { create(:event, owner: owner) }
+    let(:event) { create(:event, owner:) }
     let(:user) { create(:user) }
-    let!(:ticket) { create(:ticket, user: user, event: event) }
+    let!(:ticket) { create(:ticket, user:, event:) }
     describe '参加したイベントをキャンセルする' do
       before do
         sign_in_as user
