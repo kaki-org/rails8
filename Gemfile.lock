@@ -109,7 +109,8 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (2.7.6)
+    faraday (2.7.11)
+      base64
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
@@ -212,14 +213,9 @@ GEM
     omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
-    opensearch-api (2.2.0)
-      multi_json
-    opensearch-ruby (2.1.0)
-      opensearch-api (~> 2.1)
-      opensearch-transport (~> 2.0)
-    opensearch-transport (2.1.0)
+    opensearch-ruby (3.0.1)
       faraday (>= 1.0, < 3)
-      multi_json
+      multi_json (>= 1.0)
     parallel (1.23.0)
     parser (3.2.2.3)
       ast (~> 2.4.1)
