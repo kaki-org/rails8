@@ -6,7 +6,7 @@
     "@babel/preset-env": "^7.22.4",
     "@hotwired/turbo-rails": "^7.1.0",
     "@popperjs/core": "^2.11.8",
-    "@rails/actioncable": "^7.0.2",
+    "@rails/actioncable": "^7.1.0",
     "@rails/actiontext": "^7.0.2",
     "@rails/activestorage": "^7.0.2",
     "@rails/ujs": "^7.0.5",
