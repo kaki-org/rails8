@@ -2593,9 +2593,9 @@ webpack-merge@^5.7.3:
     wildcard "^2.0.0"
 
 webpack-remove-empty-scripts@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/webpack-remove-empty-scripts/-/webpack-remove-empty-scripts-1.0.1.tgz#5a9790625d3dd81a423dde84fd64db61869457b4"
-  integrity sha512-xYiTgeS2ahqwExL7igmUeUMnZ+CQX7mrRFjSIR83PsEj1U7lM/GVEpzrayJxYTYZEdSTBYtoCCVulUWO9gtLmA==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/webpack-remove-empty-scripts/-/webpack-remove-empty-scripts-1.0.4.tgz#7b2941e93f805f543b8cbeea6ac244233b863775"
+  integrity sha512-W/Vd94oNXMsQam+W9G+aAzGgFlX1aItcJpkG3byuHGDaxyK3H17oD/b5RcqS/ZHzStIKepksdLDznejDhDUs+Q==
   dependencies:
     ansis "1.5.2"
 
