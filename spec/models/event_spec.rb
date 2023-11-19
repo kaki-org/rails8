@@ -50,14 +50,14 @@ RSpec.describe Event, type: :model do
       end
     end
     context '開始時間が指定されていない場合' do
-      let(:event) { build(:event, :no_start_at) }
+      let(:event) { build(:event, start_at: nil, end_at: Time.current + rand(1..30).hours) }
       it 'イベントが作成されないこと' do
         expect(event).not_to be_valid
         expect(event.errors[:start_at]).to eq(['を入力してください'])
       end
     end
     context '終了時間が指定されていない場合' do
-      let(:event) { build(:event, :no_end_at) }
+      let(:event) { build(:event, start_at: Time.current, end_at: nil) }
       it 'イベントが作成されないこと' do
         expect(event).not_to be_valid
         expect(event.errors[:end_at]).to eq(['を入力してください'])
