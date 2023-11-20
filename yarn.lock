@@ -2590,9 +2590,9 @@ to-fast-properties@^2.0.0:
   integrity sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==
 
 trix@^2.0.7:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/trix/-/trix-2.0.7.tgz#21cd94616864f908ec802fe029e69f628a694eca"
-  integrity sha512-qnqElm1BA4XYMgwowEHlF4xE4wfEjFBpmybvdzVUQP4OTzQxRXVEQNP4WSvWT6HzV4wYFP06/HSo14fWoGo6jQ==
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/trix/-/trix-2.0.8.tgz#6fff81b9e02c4f60a181febb3f6e862fbb98f1c4"
+  integrity sha512-tPqJl+NjALVUOC8sNfRrY42K7cfp4QBb9svXxmfhxYrspF9fOOzXq+GnDa9l2ZAcfM43msnPpkJ7MrJQA3FgrA==
 
 turbolinks@^5.2.0:
   version "5.2.0"
