@@ -72,7 +72,6 @@ jobs:
         #  uses: elastic/elastic-github-actions/elasticsearch@master
         with:
           stack-version: 7.17.9
-          security-enabled: false
           plugins: |
             analysis-kuromoji
             analysis-icu
@@ -84,7 +83,6 @@ jobs:
           echo $ELASTIC_SEARCH_URL
           curl -fsSL "$ELASTIC_SEARCH_URL/_cat/health?h=status"
       #     curl -X GET "$ELASTIC_SEARCH_URL/_nodes/plugins?pretty"
-
       - name: Setup bundler
         run: gem install bundler
 
