@@ -13,7 +13,7 @@ require 'action_controller/railtie'
 # require "action_mailbox/engine"
 # require "action_text/engine"
 require 'action_view/railtie'
-# require "action_cable/engine"
+require "action_cable/engine"
 require 'sprockets/railtie'
 require 'rails/test_unit/railtie'
 
@@ -24,7 +24,7 @@ Bundler.require(*Rails.groups)
 module App
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 7.1
     config.time_zone = 'Tokyo'
     config.i18n.default_locale = :ja
 
