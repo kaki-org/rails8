@@ -54,9 +54,9 @@ jobs:
       - name: Setup Ruby version
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.2
+          ruby-version: 3.3.3
           bundler-cache: true
-      - name: Use Node.js 18.16.0
+      - name: Use Node.js 20.14.0
         uses: actions/setup-node@v4
         with:
           node-version: 20.14.0
