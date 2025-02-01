@@ -94,9 +94,17 @@ jobs:
         run: |
           bundle config set path 'vendor/bundle'
           bundle install --jobs 4 --retry 3
-      - name: yarn install
-        run: yarn install --check-files
-      - name: yarn build
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+      - name: Setup node env 🧱
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.tool-versions'
+          cache: 'pnpm'
+      - name: Install dependencies 👨🏻‍💻
+        shell: bash
+        run: pnpm install --frozen-lockfile
+      - name: pnpm build
         run: bundle exec rails assets:precompile
 
       - name: Setup Database
