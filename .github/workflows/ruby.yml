@@ -84,8 +84,8 @@ jobs:
         run: sudo apt-get update -y && sudo apt-get install libmysqlclient-dev
       - name: Verify Elasticsearch connection from host
         run: |
-          echo $ELASTIC_SEARCH_URL
-          curl -fsSL "$ELASTIC_SEARCH_URL/_cat/health?h=status"
+          echo "${ELASTIC_SEARCH_URL}"
+          curl -fsSL "${ELASTIC_SEARCH_URL}/_cat/health?h=status"
       #     curl -X GET "$ELASTIC_SEARCH_URL/_nodes/plugins?pretty"
       - name: Setup bundler
         run: gem install bundler
