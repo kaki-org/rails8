@@ -63,7 +63,7 @@ jobs:
       - name: Use Node.js 20.15.0
         uses: actions/setup-node@v4
         with:
-          node-version: 20.15.0
+          node-version: 22.14.0
       # elasticsearch起動用に必要
       - name: Configure sysctl limits
         run: |
