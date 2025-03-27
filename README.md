@@ -1,6 +1,6 @@
 # rails8
 
-perfect rails7
+perfect rails8
 
 ## 初期構築
 
@@ -14,7 +14,14 @@ dip.yml
 docker-compose.yml
 ```
 
-bundleを実行して、rails newする。
+事前に`mysql@8.0`をインストールした状態で、以下の通りシェルにセットしておく
+
+```bash
+brew install mysql@8.0
+bundle config --local build.mysql2 "--with-mysql-dir=$(brew --prefix mysql@8.0)"
+```
+
+その上でbundleを実行して、rails newする。
 
 ```bash
 dip bundle
