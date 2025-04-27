@@ -34,7 +34,7 @@ gem 'omniauth-github', '~> 2.0.1'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
 gem 'opensearch-ruby' # select one
 gem 'rails-i18n', '~> 8.0.0'
-gem 'searchkick', '~> 5.4.0'
+gem 'searchkick', '~> 5.5.1'
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-lcov', require: false, group: :test
 
