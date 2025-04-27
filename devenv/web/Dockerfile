@@ -1,25 +1,26 @@
 # ビルド用コンテナ
 ARG IMAGE_FILE
-FROM $IMAGE_FILE:3.3.6-alpine3.20 AS builder
+FROM $IMAGE_FILE:3.4.3-alpine3.21 AS builder
 RUN apk --update --no-cache add --virtual build-dependencies \
     build-base \
-    git \
-    make \
-    gcc \
     g++ \
+    gcc \
     gcompat \
-    zlib-dev \
+    git \
     libffi-dev \
-    readline-dev \
     libxml2-dev \
-    libxslt-dev
+    libxslt-dev \
+    make \
+    readline-dev \
+    yaml-dev \
+    zlib-dev
 RUN apk --update --no-cache add \
     bash \
-    yarn \
+    imagemagick \
     mariadb-client \
     mariadb-dev \
-    imagemagick \
-    tzdata
+    tzdata \
+    yarn
 ENV APP_PATH /work/app
 WORKDIR $APP_PATH
 
@@ -31,7 +32,7 @@ RUN gem update bundler \
     && apk del build-dependencies # --virtual でグルーピングしたpackageを削除
 RUN rm -rf /usr/local/bundle/cache/*
 
-FROM ${IMAGE_FILE}:3.3.6-alpine3.20
+FROM ${IMAGE_FILE}:3.4.3-alpine3.21
 RUN apk --no-cache add \
     build-base \
     bash \
