@@ -54,7 +54,7 @@ services:
     - ./config/credentials:/app/config/credentials:cached
 
   redis:
-    image: "redis:7-alpine"
+    image: "redis:8-alpine"
     ports:
       - "56379:6379"
 
