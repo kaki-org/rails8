@@ -59,9 +59,6 @@ importers:
       mini-css-extract-plugin:
         specifier: ^2.7.3
         version: 2.9.2(webpack@5.99.7)
-      popper.js:
-        specifier: 1.16.1
-        version: 1.16.1
       rails-erb-loader:
         specifier: ^5.5.2
         version: 5.5.2(webpack@5.99.7)
@@ -1226,10 +1223,6 @@ packages:
   pkg-dir@4.2.0:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
-
-  popper.js@1.16.1:
-    resolution: {integrity: sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==}
-    deprecated: You can find the new Popper v2 at @popperjs/core, this package is dedicated to the legacy v1
 
   postcss@8.5.1:
     resolution: {integrity: sha512-6oz2beyjc5VMn/KV1pPw8fliQkhBXrVn1Z3TVyqZxU8kZpzEKhBdmCFqI6ZbmGtamQvQGuU1sgPTk8ZrXDD7jQ==}
@@ -2741,8 +2734,6 @@ snapshots:
   pkg-dir@4.2.0:
     dependencies:
       find-up: 4.1.0
-
-  popper.js@1.16.1: {}
 
   postcss@8.5.1:
     dependencies:
