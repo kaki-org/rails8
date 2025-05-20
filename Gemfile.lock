@@ -382,7 +382,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    searchkick (5.5.1)
+    searchkick (5.5.2)
       activemodel (>= 7.1)
       hashie
     securerandom (0.4.1)
