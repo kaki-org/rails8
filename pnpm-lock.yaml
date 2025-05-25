@@ -88,7 +88,7 @@ importers:
         version: 6.0.1(webpack@5.99.9)
       webpack-remove-empty-scripts:
         specifier: ^1.0.1
-        version: 1.0.4(webpack@5.99.9)
+        version: 1.1.0(webpack@5.99.9)
     devDependencies:
       '@babel/plugin-syntax-dynamic-import':
         specifier: ^7.8.3
@@ -827,9 +827,9 @@ packages:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
     engines: {node: '>=8'}
 
-  ansis@1.5.2:
-    resolution: {integrity: sha512-T3vUABrcgSj/HXv27P+A/JxGk5b/ydx0JjN3lgjBTC2iZUFxQGjh43zCzLSbU4C1QTgmx9oaPeWNJFM+auI8qw==}
-    engines: {node: '>=12.13'}
+  ansis@4.0.0-node10:
+    resolution: {integrity: sha512-BRrU0Bo1X9dFGw6KgGz6hWrqQuOlVEDOzkb0QSLZY9sXHqA7pNj7yHPVJRz7y/rj4EOJ3d/D5uxH+ee9leYgsg==}
+    engines: {node: '>=10'}
 
   babel-loader@10.0.0:
     resolution: {integrity: sha512-z8jt+EdS61AMw22nSfoNJAZ0vrtmhPRVi6ghL3rCeRZI8cdNYFiV5xeV3HbE7rlZZNmGH8BVccwWt8/ED0QOHA==}
@@ -1464,8 +1464,8 @@ packages:
     resolution: {integrity: sha512-hXXvrjtx2PLYx4qruKl+kyRSLc52V+cCvMxRjmKwoA+CBbbF5GfIBtR6kCvl0fYGqTUPKB+1ktVmTHqMOzgCBg==}
     engines: {node: '>=18.0.0'}
 
-  webpack-remove-empty-scripts@1.0.4:
-    resolution: {integrity: sha512-W/Vd94oNXMsQam+W9G+aAzGgFlX1aItcJpkG3byuHGDaxyK3H17oD/b5RcqS/ZHzStIKepksdLDznejDhDUs+Q==}
+  webpack-remove-empty-scripts@1.1.0:
+    resolution: {integrity: sha512-XJNhYcaLvS8XrPWVIe/uAGIrEAhGiDqfxv3KdfZIq8TiEAmo0OWK7iNV1B/PCQXVbzb9WQ60itIzM1Hv9oWXhA==}
     engines: {node: '>=12.14'}
     peerDependencies:
       webpack: '>=5.32.0'
@@ -2434,7 +2434,7 @@ snapshots:
     dependencies:
       color-convert: 2.0.1
 
-  ansis@1.5.2: {}
+  ansis@4.0.0-node10: {}
 
   babel-loader@10.0.0(@babel/core@7.27.1)(webpack@5.99.9):
     dependencies:
@@ -2992,9 +2992,9 @@ snapshots:
       flat: 5.0.2
       wildcard: 2.0.1
 
-  webpack-remove-empty-scripts@1.0.4(webpack@5.99.9):
+  webpack-remove-empty-scripts@1.1.0(webpack@5.99.9):
     dependencies:
-      ansis: 1.5.2
+      ansis: 4.0.0-node10
       webpack: 5.99.9(webpack-cli@6.0.1)
 
   webpack-sources@3.2.3: {}
