@@ -1,4 +1,4 @@
-FROM ruby:3.4.4 AS nodejs
+FROM ruby:3.4.5 AS nodejs
 
 WORKDIR /tmp
 
@@ -6,7 +6,7 @@ RUN curl -LO https://nodejs.org/dist/v18.16.0/node-v18.16.0-linux-x64.tar.xz
 RUN tar xvf node-v18.16.0-linux-x64.tar.xz
 RUN mv node-v18.16.0-linux-x64 node
 
-FROM ruby:3.4.4
+FROM ruby:3.4.5
 
 COPY --from=nodejs /tmp/node /opt/node
 ENV PATH /opt/node/bin:$PATH
