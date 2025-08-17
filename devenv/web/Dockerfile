@@ -1,6 +1,6 @@
 # ビルド用コンテナ
 ARG IMAGE_FILE
-FROM $IMAGE_FILE:3.4.3-alpine3.21 AS builder
+FROM $IMAGE_FILE:3.4.5-alpine3.22 AS builder
 RUN apk --update --no-cache add --virtual build-dependencies \
     build-base \
     g++ \
@@ -32,7 +32,7 @@ RUN gem update bundler \
     && apk del build-dependencies # --virtual でグルーピングしたpackageを削除
 RUN rm -rf /usr/local/bundle/cache/*
 
-FROM ${IMAGE_FILE}:3.4.3-alpine3.21
+FROM ${IMAGE_FILE}:3.4.5-alpine3.22
 RUN apk --no-cache add \
     build-base \
     bash \
