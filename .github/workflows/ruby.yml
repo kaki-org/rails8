@@ -60,7 +60,7 @@ jobs:
         with:
           ruby-version: .tool-versions
           bundler-cache: true
-      - name: Use Node.js 20.15.0
+      - name: Use Node.js 22.19.0
         uses: actions/setup-node@v5
         with:
           node-version: 22.19.0
