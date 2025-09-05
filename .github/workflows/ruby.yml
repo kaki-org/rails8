@@ -64,6 +64,7 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22.19.0
+          package-manager-cache: false
       # elasticsearch起動用に必要
       - name: Configure sysctl limits
         run: |
