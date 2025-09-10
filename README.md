@@ -1,213 +1,168 @@
-# rails8
+# Rails 8 イベント管理アプリケーション
 
-perfect rails8
+Rails 8 を使用したイベント管理・参加申込みシステムです。ユーザーがイベントを作成・管理し、他のユーザーがそのイベントに参加申込みできる Web アプリケーションです。
 
-## 初期構築
+## 🚀 主な機能
 
-ディレクトリにあるファイルは以下の通り
+### イベント管理
 
-```bash
-Gemfile
-Gemfile.lock
-README.md
-dip.yml
-docker-compose.yml
-```
+- **イベント作成・編集・削除**: 認証済みユーザーがイベントを管理
+- **イベント詳細表示**: 誰でもイベント詳細を閲覧可能
+- **画像アップロード**: イベントに画像を添付（Active Storage 使用）
+- **検索機能**: キーワードによるイベント検索（Searchkick + OpenSearch）
+- **ページネーション**: イベント一覧のページ分割表示
 
-事前に`mysql@8.0`をインストールした状態で、以下の通りシェルにセットしておく
+### ユーザー管理
+
+- **GitHub OAuth 認証**: GitHub アカウントでのログイン
+- **ユーザープロフィール**: 名前、アバター画像の管理
+- **アカウント削除**: 未終了イベントがない場合のみ削除可能
+
+### 参加管理（チケット機能）
+
+- **イベント参加申込み**: 認証済みユーザーがイベントに参加表明
+- **参加キャンセル**: 参加申込みの取り消し
+- **参加者一覧**: イベントの参加者とコメントを表示
+- **コメント機能**: 参加時にコメントを添付可能
+
+## 🛠 技術スタック
+
+### バックエンド
+
+- **Ruby**: 3.4.5
+- **Rails**: 8.0.0
+- **データベース**: MySQL 8.0
+- **認証**: OmniAuth (GitHub)
+- **検索**: Searchkick + OpenSearch
+- **バックグラウンドジョブ**: Sidekiq
+- **ファイルアップロード**: Active Storage
+- **テンプレートエンジン**: Hamlit
+
+### フロントエンド
+
+- **JavaScript**: Stimulus Rails, Turbo Rails
+- **CSS**: Bootstrap 5.3.7, SCSS
+- **バンドラー**: Webpack
+- **その他**: jQuery, Vue.js 3
+
+### 開発・運用
+
+- **コンテナ**: Docker, Docker Compose
+- **開発支援**: dip (Docker Interaction Process)
+- **テスト**: RSpec, Capybara (Playwright driver)
+- **コード品質**: RuboCop, Bullet (N+1 クエリ検出)
+- **カバレッジ**: SimpleCov
+
+## 📊 データベース構造
+
+### テーブル構成
+
+- **users**: ユーザー情報（GitHub OAuth）
+- **events**: イベント情報（名前、場所、内容、開始/終了時間）
+- **tickets**: 参加申込み情報（ユーザーとイベントの関連）
+- **active*storage*\***: ファイルアップロード関連
+
+### 主要な関連
+
+- User has_many Events (as owner)
+- User has_many Tickets
+- Event has_many Tickets
+- Event has_one_attached :image
+
+## 🚀 セットアップ
+
+### 前提条件
+
+- Docker & Docker Compose
+- MySQL 8.0 (ローカル開発の場合)
+
+### 初期構築
+
+1. **MySQL 設定** (ローカル開発の場合)
 
 ```bash
 brew install mysql@8.0
 bundle config --local build.mysql2 "--with-mysql-dir=$(brew --prefix mysql@8.0)"
 ```
 
-その上でbundleを実行して、rails newする。
+2. **アプリケーション起動**
 
 ```bash
+# Dockerを使用する場合
+docker-compose up
+
+# dipを使用する場合
 dip bundle
 dip rails new .
+dip up
 ```
 
-## 色々やろうぜ
-
-`cleanup.sh`を実行する事で`rails new`して出来たファイル群を作成し、新たに`rails new`を実行する事ができる。
-
-## routingを確認する
-
-知らなかったけど、以下でさくっとルーティング情報がわかるみたい。
-
-<http://rails7.lvh.me:53000/rails/info/routes>
-
-## h2oでEarly Hintsを試す(※)
-
-※注 このセクションはうまく動作しなかった為、参考程度にしておく。
-h2oをインストール(`brew install h2o`)して、`/Users/teruo.kakikubo/brew/etc/h2o/h2o.conf`を以下の通りに編集する
+3. **データベース初期化**
 
 ```bash
-teruo.kakikubo@C02DN0TXML87 ~/brew/etc/h2o % cat h2o.conf
-#listen: 8080
-#hosts:
-#  "127.0.0.1.xip.io:8080":
-#    paths:
-#      /:
-#        file.dir: /Users/teruo.kakikubo/brew/var/h2o/
-hosts:
-  localhost:
-    listen:
-      port: 9090
-      ssl:
-        certificate-file: /Users/teruo.kakikubo/brew/etc/h2o/localhost.crt
-        key-file: /Users/teruo.kakikubo/brew/etc/h2o/localhost.key
-    paths:
-      /:
-        proxy.reverse.url: http://127.0.0.1:53000/
-        proxy.preserve-host: ON
-access-log: /Users/teruo.kakikubo/brew/var/h2o/access-log
-error-log: /Users/teruo.kakikubo/brew/var/h2o/error-log
+dip rails db:create db:migrate
+dip rails searchkick:reindex CLASS=Event
 ```
 
-証明書情報を以下のように作成、配置する
+### 環境変数
+
+- `MYSQL_HOST`: MySQL ホスト (デフォルト: localhost)
+- `MYSQL_PORT`: MySQL ポート (デフォルト: 3306)
+- GitHub OAuth 設定が必要
+
+## 🧪 テスト
 
 ```bash
-teruo.kakikubo@C02DN0TXML87 ~/brew/etc/h2o % openssl req -nodes -x509 -new \
--days 36500 -subj "/CN=localhost" \
--keyout /Users/teruo.kakikubo/brew/etc/h2o/localhost.key \
--out /Users/teruo.kakikubo/brew/etc/h2o/localhost.crt
-Generating a RSA private key
-..............................................................................................+++++
-............................................................................+++++
-writing new private key to '/Users/teruo.kakikubo/brew/etc/h2o/localhost.key'
------
+# テスト実行
+dip rspec
+
+# カバレッジ確認
+open coverage/index.html
 ```
 
-h2oを起動する
+## 📝 開発メモ
 
-```bash
-% h2o -c /Users/teruo.kakikubo/brew/etc/h2o/h2o.conf
-```
+### ルーティング確認
 
-## Sidekiqを利用する
+<http://localhost:3000/rails/info/routes>
 
-<http://rails7.lvh.me:53000/sidekiq>
+### Sidekiq 管理画面
 
-FIXME ちょっと謎な動き。
+<http://localhost:3000/sidekiq>
 
-```bash
-irb(main):007:0> AsyncLogJob.perform_later(message: '44')
-irb(main):002:0> AsyncLog.last
-  AsyncLog Load (0.7ms)  SELECT `async_logs`.* FROM `async_logs` ORDER BY `async_logs`.`id` DESC LIMIT 1
-=> #<AsyncLog id: 14, message: "bbb", created_at: "2021-03-12 21:04:08.776910000 +0000", updated_at: "2021-03-12 21:04:08.776910000 +0000">
-```
+### Docker 関連
 
-`sidekiq`を起動してない状態だと上記のようにperform_laterが処理されず、
-キューに溜まったままの状態になるのだが、これを別ターミナルで
-
-```bash
-dip bundle exec sidekiq
-```
-
-とすると
-
-```bash
-irb(main):008:0> AsyncLog.last
-  AsyncLog Load (1.0ms)  SELECT `async_logs`.* FROM `async_logs` ORDER BY `async_logs`.`id` DESC LIMIT 1
-=> #<AsyncLog id: 15, message: "44", created_at: "2021-03-15 21:07:55.098130000 +0000", updated_at: "2021-03-15 21:07:55.098130000 +0000">
-```
-
-きちんと処理され、
-
-```bash
-dip up worker
-```
-
-とすると、perform_laterで`sidekiq`を起動しても何も処理されない。
-どういう事だろうか。。。
-
-## bullet
-
-```bash
-dip rails g bullet:install
-```
-
-## webpack
-
-きちんとやっておこう
-
-```bash
-dip rails assets:precompile
-```
-
-## skylight
-
-```bash
-teruo.kakikubo@C02DN0TXML87 ~/Documents/rails7 % dip bundle exec skylight setup wfY88nn7tx0p
-Creating rails7_web_run ... done
-W, [2021-03-30T07:47:43.025198 #21]  WARN -- Skylight: [SKYLIGHT] [5.0.1] Running Skylight in development mode. No data will be reported until you deploy your app.
-(To disable this message for all local apps, run `skylight disable_dev_warning`.)
-Running via Spring preloader in process 41
-Congratulations. Your application is on Skylight! https://www.skylight.io
-
-The application was registered for you and we generated a config file
-containing your API token at:
-
-  config/skylight.yml
-
-The next step is for you to deploy your application to production. The
-easiest way is to just commit the config file to your source control
-repository and deploy from there. You can learn more about the process at:
-
-  https://docs.skylight.io/getting-set-up/#deployment
-
-If you want to specify the authentication token as an environment variable,
-you should set the `SKYLIGHT_AUTHENTICATION` variable to:
-
-  E2movt18Qd0UnzxeJKZJ51TfV5pBTE7FcBiPZRxUXWk
-```
-
-## Docker
-
-Dockerfileを単体で用意してあるのでそちらを利用する。.dockerignoreも参照
+**通常の Dockerfile**
 
 ```bash
 docker build -t myrailsapp .
 docker run -p 3000:3000 myrailsapp
 ```
 
-buildkitで高速化した例
+**BuildKit 使用**
 
 ```bash
 DOCKER_BUILDKIT=1 docker build -t myrailsapp -f Dockerfile-buildkit .
 docker run -p 3000:3000 myrailsapp
 ```
 
-## SimpleCov
+## 🔧 既知の問題・TODO
 
-テスト結果は毎度 coverage/index.html として出力されているのでそちらを
-参照しつつカバレッジをあげていく
+### 検索機能
 
-```bash
-dip rspec
-open coverage/index.html
-```
-
-## FIXME
-
-`Event.reindex` を実行していないと以下のログが出て前に進めない。
-
-```bash
-Searchkick::MissingIndexError (Index missing - run Event.reindex):
-```
-
-どうにか、初期化時になんとかする事はできないのか。
+- 初回起動時に `Event.reindex` の実行が必要
+- `Searchkick::MissingIndexError` が発生する場合は以下を実行:
 
 ```bash
 dip rails searchkick:reindex CLASS=Event
 ```
 
-結局上記をprovisionに含めるしかなさそうかな。。
+### その他
 
-### 他のユーザが作成したイベントに参加できない
+- [ ] 他のユーザが作成したイベントに参加できない問題の修正
+- [ ] Sidekiq の動作確認と修正
+- [ ] プロダクション環境での設定最適化
 
-- [x] テストケースを書く
-- [ ] 修正する
-- [ ] publishしてくれよ
+## 📄 ライセンス
+
+このプロジェクトは MIT ライセンスの下で公開されています。

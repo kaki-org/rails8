@@ -16,10 +16,9 @@
     "@rails/ujs": "^7.1.1",
     "babel-loader": "^10.0.0",
     "babel-plugin-macros": "^3.1.0",
-    "bootstrap": "5.3.3",
+    "bootstrap": "5.3.8",
     "jquery": "3.7.1",
     "mini-css-extract-plugin": "^2.7.3",
-    "popper.js": "1.16.1",
     "rails-erb-loader": "^5.5.2",
     "stimulus": "^3.2.1",
     "trix": "^2.0.7",
@@ -27,7 +26,7 @@
     "vue": "^3.3.2",
     "vue-loader": "^17.3.0",
     "vue-template-compiler": "^2.7.0",
-    "webpack": "^5.89.0",
+    "webpack": "^5.99.7",
     "webpack-cli": "^6.0.0",
     "webpack-remove-empty-scripts": "^1.0.1"
   },
@@ -44,5 +43,5 @@
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.23.2"
   },
-  "packageManager": "pnpm@10.7.0"
+  "packageManager": "pnpm@10.15.1"
 }

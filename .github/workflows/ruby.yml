@@ -21,7 +21,7 @@ jobs:
 
     services:
       mysql:
-        image: mysql:9.2
+        image: mysql:9.4
         ports:
           - 3306:3306
         env:
@@ -49,10 +49,10 @@ jobs:
           show-waiting-runner: true
       - name: checkout
         if: ${{ github.event_name != 'pull_request' }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: checkout pr
         if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Setup Ruby version
@@ -60,10 +60,11 @@ jobs:
         with:
           ruby-version: .tool-versions
           bundler-cache: true
-      - name: Use Node.js 22.15.0
+      - name: Use Node.js 22.19.0
         uses: actions/setup-node@v5
         with:
-          node-version: 22.15.0
+          node-version: 22.19.0
+          package-manager-cache: false
       # elasticsearch起動用に必要
       - name: Configure sysctl limits
         run: |
@@ -97,7 +98,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
       - name: Setup node env 🧱
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version-file: '.tool-versions'
           cache: 'pnpm'
@@ -122,7 +123,7 @@ jobs:
           bundle exec rspec
 
       - name: Codecov
-        uses: codecov/codecov-action@v5.4.0
+        uses: codecov/codecov-action@v5.5.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: coverage # このディレクトリに、テスティングツールによるカバレッジレポートファイルが出力される想定
