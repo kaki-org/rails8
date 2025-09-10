@@ -3,14 +3,14 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.4.2'
+ruby '3.4.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 8.0.0'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
 # Use Puma as the app server
-gem 'puma', '~> 6.4'
+gem 'puma', '~> 7.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 2.11'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-gem 'active_storage_validations', '~> 2.0.0'
+gem 'active_storage_validations', '~> 3.0.0'
 gem 'image_processing', '~> 1.12'
 gem 'sidekiq'
 # Reduces boot times through caching; required in config/boot.rb
@@ -34,7 +34,7 @@ gem 'omniauth-github', '~> 2.0.1'
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
 gem 'opensearch-ruby' # select one
 gem 'rails-i18n', '~> 8.0.0'
-gem 'searchkick', '~> 5.4.0'
+gem 'searchkick', '~> 5.5.1'
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-lcov', require: false, group: :test
 
@@ -64,7 +64,7 @@ group :development do
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'listen', '~> 3.8'
-  gem 'rack-mini-profiler', '~> 3.1', require: false
+  gem 'rack-mini-profiler', '~> 4.0', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'rspec-rails'
   gem 'rubocop', require: false
