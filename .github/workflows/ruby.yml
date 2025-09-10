@@ -6,7 +6,7 @@ on:
     types: [opened, reopened, synchronize]
 
 concurrency:
-  group: rails7-${{ github.event.pull_request.head.ref || github.ref_name }}
+  group: rails8-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 
 jobs:
@@ -60,10 +60,11 @@ jobs:
         with:
           ruby-version: .tool-versions
           bundler-cache: true
-      - name: Use Node.js 20.15.0
-        uses: actions/setup-node@v4
+      - name: Use Node.js 22.19.0
+        uses: actions/setup-node@v5
         with:
           node-version: 22.19.0
+          package-manager-cache: false
       # elasticsearch起動用に必要
       - name: Configure sysctl limits
         run: |
@@ -97,7 +98,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
       - name: Setup node env 🧱
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version-file: '.tool-versions'
           cache: 'pnpm'
@@ -122,7 +123,7 @@ jobs:
           bundle exec rspec
 
       - name: Codecov
-        uses: codecov/codecov-action@v5.5.0
+        uses: codecov/codecov-action@v5.5.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: coverage # このディレクトリに、テスティングツールによるカバレッジレポートファイルが出力される想定
