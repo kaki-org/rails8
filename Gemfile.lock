@@ -387,9 +387,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    searchkick (5.5.2)
-      activemodel (>= 7.1)
-      hashie
+    searchkick (6.0.2)
+      activemodel (>= 7.2)
     securerandom (0.4.1)
     sidekiq (8.0.8)
       connection_pool (>= 2.5.0)
@@ -488,7 +487,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sass-rails (>= 6)
-  searchkick (~> 5.5.1)
+  searchkick (~> 6.0.0)
   sidekiq
   simplecov
   simplecov-lcov
