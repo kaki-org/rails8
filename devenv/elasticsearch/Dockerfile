@@ -1,4 +1,4 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:9.1.5
+FROM docker.elastic.co/elasticsearch/elasticsearch:9.2.0
 RUN elasticsearch-plugin install analysis-kuromoji
 RUN elasticsearch-plugin install analysis-icu
 
