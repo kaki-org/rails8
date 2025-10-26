@@ -34,13 +34,13 @@ importers:
         version: 2.11.8
       '@rails/actioncable':
         specifier: ^8.0.0
-        version: 8.0.300
+        version: 8.1.0
       '@rails/actiontext':
         specifier: ^8.0.0
-        version: 8.0.300(trix@2.1.15)
+        version: 8.1.0(trix@2.1.15)
       '@rails/activestorage':
         specifier: ^8.0.0
-        version: 8.0.300
+        version: 8.1.0
       '@rails/ujs':
         specifier: ^7.1.1
         version: 7.1.502
@@ -674,16 +674,16 @@ packages:
   '@popperjs/core@2.11.8':
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
 
-  '@rails/actioncable@8.0.300':
-    resolution: {integrity: sha512-X+jxLnyYciTciEeM9crFFsR6DCodCsnoQIzv4hEST6Lx1rEBEjNQbBopnyDT4gr7lBeHJNfb6fEcvZuWFxUSQg==}
+  '@rails/actioncable@8.1.0':
+    resolution: {integrity: sha512-9WSbN548dplVkfCFJFi/CKrJ+P4runAHZLlpXFn0xL+Y6tFJvo3zp92fr4ON9WOhNt8inetu8NJG1xDDAJ8N8g==}
 
-  '@rails/actiontext@8.0.300':
-    resolution: {integrity: sha512-3uIRBH7SsjlgbpZQTEsgZg9bdH2umdjCoXp02oRF1PzEi/TcOTQD/PXTthkRiXdo0sA6y3PMgJNiPs/JfW4JLQ==}
+  '@rails/actiontext@8.1.0':
+    resolution: {integrity: sha512-N5liu+rVlYQixDGydzm+TnT1N5dsgwvSjk1EL8Frnzp0girTWAVU5LjJa7k2g63RxoPcY4S7JZhnjoyJw4ocJA==}
     peerDependencies:
       trix: ^2.0.0
 
-  '@rails/activestorage@8.0.300':
-    resolution: {integrity: sha512-vgugHjdH0wLM1+ajWdoiNNFphDsZrd349iJvfyVPC21IkMdJOnaBpF4eaV847cDqP/7mxxDZ4nkhc7dgQjGa4A==}
+  '@rails/activestorage@8.1.0':
+    resolution: {integrity: sha512-D2T6flCX+W3dGMzqHNikVgw1D1xpVb5wvxnQB/naHUpxgZ55Ch4D8yb246umSA3SDvk4qhuwU7knQF79VMG/Eg==}
 
   '@rails/ujs@7.1.502':
     resolution: {integrity: sha512-SFtA5X59BimNG8cy60pgZhPf1bGpg5KXVYF6Jj5H5hrwwNXKNmD2yNZhHC+WfuLqBN+972cZHR9Fto6nJQz+Xw==}
@@ -2277,7 +2277,7 @@ snapshots:
   '@hotwired/turbo-rails@8.0.18':
     dependencies:
       '@hotwired/turbo': 8.0.18
-      '@rails/actioncable': 8.0.300
+      '@rails/actioncable': 8.1.0
 
   '@hotwired/turbo@8.0.18': {}
 
@@ -2307,14 +2307,14 @@ snapshots:
 
   '@popperjs/core@2.11.8': {}
 
-  '@rails/actioncable@8.0.300': {}
+  '@rails/actioncable@8.1.0': {}
 
-  '@rails/actiontext@8.0.300(trix@2.1.15)':
+  '@rails/actiontext@8.1.0(trix@2.1.15)':
     dependencies:
-      '@rails/activestorage': 8.0.300
+      '@rails/activestorage': 8.1.0
       trix: 2.1.15
 
-  '@rails/activestorage@8.0.300':
+  '@rails/activestorage@8.1.0':
     dependencies:
       spark-md5: 3.0.2
 
