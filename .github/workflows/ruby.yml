@@ -49,10 +49,10 @@ jobs:
           show-waiting-runner: true
       - name: checkout
         if: ${{ github.event_name != 'pull_request' }}
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: checkout pr
         if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Setup Ruby version
@@ -63,7 +63,7 @@ jobs:
       - name: Use Node.js 22.19.0
         uses: actions/setup-node@v6
         with:
-          node-version: 22.21.0
+          node-version: 24.11.1
           package-manager-cache: false
       # elasticsearch起動用に必要
       - name: Configure sysctl limits
