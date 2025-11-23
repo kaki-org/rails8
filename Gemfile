@@ -31,7 +31,7 @@ gem 'hamlit-rails', '~> 0.2.3'
 gem 'kaminari', '~> 1.2.2'
 gem 'omniauth', '~> 2.1.1'
 gem 'omniauth-github', '~> 2.0.1'
-gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
+gem 'omniauth-rails_csrf_protection', '~> 2.0.0'
 gem 'opensearch-ruby' # select one
 gem 'rails-i18n', '~> 8.0.0'
 gem 'searchkick', '~> 6.0.0'
