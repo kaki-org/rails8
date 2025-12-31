@@ -86,3 +86,5 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "benchmark", "~> 0.5.0"
+
+gem "ostruct", "~> 0.6.3"
