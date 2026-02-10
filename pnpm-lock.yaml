@@ -34,10 +34,10 @@ importers:
         version: 3.7.1
       mini-css-extract-plugin:
         specifier: ^2.7.3
-        version: 2.10.0(webpack@5.105.0)
+        version: 2.10.0(webpack@5.105.1)
       rails-erb-loader:
         specifier: ^5.5.2
-        version: 5.5.2(webpack@5.105.0)
+        version: 5.5.2(webpack@5.105.1)
       stimulus:
         specifier: ^3.2.1
         version: 3.2.2
@@ -52,19 +52,19 @@ importers:
         version: 3.5.28
       vue-loader:
         specifier: ^17.3.0
-        version: 17.4.2(vue@3.5.28)(webpack@5.105.0)
+        version: 17.4.2(vue@3.5.28)(webpack@5.105.1)
       vue-template-compiler:
         specifier: ^2.7.0
         version: 2.7.16
       webpack:
         specifier: ^5.99.7
-        version: 5.105.0(webpack-cli@6.0.1)
+        version: 5.105.1(webpack-cli@6.0.1)
       webpack-cli:
         specifier: ^6.0.0
-        version: 6.0.1(webpack@5.105.0)
+        version: 6.0.1(webpack@5.105.1)
       webpack-remove-empty-scripts:
         specifier: ^1.0.1
-        version: 1.1.1(webpack@5.105.0)
+        version: 1.1.1(webpack@5.105.1)
 
 packages:
 
@@ -149,8 +149,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@25.2.0':
-    resolution: {integrity: sha512-DZ8VwRFUNzuqJ5khrvwMXHmvPe+zGayJhr2CDNiKB1WBE1ST8Djl00D0IC4vvNmHMdj6DlbYRIaFE7WHjlDl5w==}
+  '@types/node@25.2.3':
+    resolution: {integrity: sha512-m0jEgYlYz+mDJZ2+F4v8D1AyQb+QzsNqRuI7xg1VQX/KlKS0qT9r1Mo16yo5F/MtifXFgaofIFsdFMox2SxIbQ==}
 
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
@@ -315,8 +315,8 @@ packages:
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
 
-  caniuse-lite@1.0.30001767:
-    resolution: {integrity: sha512-34+zUAMhSH+r+9eKmYG+k2Rpt8XttfE4yXAjoZvkAPs15xcYQhyBYdalJ65BzivAvGRMViEjy6oKr/S91loekQ==}
+  caniuse-lite@1.0.30001769:
+    resolution: {integrity: sha512-BCfFL1sHijQlBGWBMuJyhZUhzo7wer5sVj9hqekB/7xn0Ypy+pER/edCYQm4exbXj4WiySGp40P8UuTh6w1srg==}
 
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -761,8 +761,8 @@ packages:
     resolution: {integrity: sha512-yd1RBzSGanHkitROoPFd6qsrxt+oFhg/129YzheDGqeustzX0vTZJZsSsQjVQC4yzBQ56K55XU8gaNCtIzOnTg==}
     engines: {node: '>=10.13.0'}
 
-  webpack@5.105.0:
-    resolution: {integrity: sha512-gX/dMkRQc7QOMzgTe6KsYFM7DxeIONQSui1s0n/0xht36HvrgbxtM1xBlgx596NbpHuQU8P7QpKwrZYwUX48nw==}
+  webpack@5.105.1:
+    resolution: {integrity: sha512-Gdj3X74CLJJ8zy4URmK42W7wTZUJrqL+z8nyGEr4dTN0kb3nVs+ZvjbTOqRYPD7qX4tUmwyHL9Q9K6T1seW6Yw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -857,7 +857,7 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@25.2.0':
+  '@types/node@25.2.3':
     dependencies:
       undici-types: 7.16.0
 
@@ -994,20 +994,20 @@ snapshots:
       '@webassemblyjs/ast': 1.14.1
       '@xtuc/long': 4.2.2
 
-  '@webpack-cli/configtest@3.0.1(webpack-cli@6.0.1)(webpack@5.105.0)':
+  '@webpack-cli/configtest@3.0.1(webpack-cli@6.0.1)(webpack@5.105.1)':
     dependencies:
-      webpack: 5.105.0(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack@5.105.0)
+      webpack: 5.105.1(webpack-cli@6.0.1)
+      webpack-cli: 6.0.1(webpack@5.105.1)
 
-  '@webpack-cli/info@3.0.1(webpack-cli@6.0.1)(webpack@5.105.0)':
+  '@webpack-cli/info@3.0.1(webpack-cli@6.0.1)(webpack@5.105.1)':
     dependencies:
-      webpack: 5.105.0(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack@5.105.0)
+      webpack: 5.105.1(webpack-cli@6.0.1)
+      webpack-cli: 6.0.1(webpack@5.105.1)
 
-  '@webpack-cli/serve@3.0.1(webpack-cli@6.0.1)(webpack@5.105.0)':
+  '@webpack-cli/serve@3.0.1(webpack-cli@6.0.1)(webpack@5.105.1)':
     dependencies:
-      webpack: 5.105.0(webpack-cli@6.0.1)
-      webpack-cli: 6.0.1(webpack@5.105.0)
+      webpack: 5.105.1(webpack-cli@6.0.1)
+      webpack-cli: 6.0.1(webpack@5.105.1)
 
   '@xtuc/ieee754@1.2.0': {}
 
@@ -1052,14 +1052,14 @@ snapshots:
   browserslist@4.28.1:
     dependencies:
       baseline-browser-mapping: 2.9.19
-      caniuse-lite: 1.0.30001767
+      caniuse-lite: 1.0.30001769
       electron-to-chromium: 1.5.286
       node-releases: 2.0.27
       update-browserslist-db: 1.2.3(browserslist@4.28.1)
 
   buffer-from@1.1.2: {}
 
-  caniuse-lite@1.0.30001767: {}
+  caniuse-lite@1.0.30001769: {}
 
   chalk@4.1.2:
     dependencies:
@@ -1184,7 +1184,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 25.2.0
+      '@types/node': 25.2.3
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -1226,11 +1226,11 @@ snapshots:
     dependencies:
       mime-db: 1.52.0
 
-  mini-css-extract-plugin@2.10.0(webpack@5.105.0):
+  mini-css-extract-plugin@2.10.0(webpack@5.105.1):
     dependencies:
       schema-utils: 4.3.3
       tapable: 2.3.0
-      webpack: 5.105.0(webpack-cli@6.0.1)
+      webpack: 5.105.1(webpack-cli@6.0.1)
 
   minimist@1.2.8: {}
 
@@ -1268,11 +1268,11 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  rails-erb-loader@5.5.2(webpack@5.105.0):
+  rails-erb-loader@5.5.2(webpack@5.105.1):
     dependencies:
       loader-utils: 1.4.2
       lodash.defaults: 4.2.0
-      webpack: 5.105.0(webpack-cli@6.0.1)
+      webpack: 5.105.1(webpack-cli@6.0.1)
 
   randombytes@2.1.0:
     dependencies:
@@ -1347,14 +1347,14 @@ snapshots:
 
   tapable@2.3.0: {}
 
-  terser-webpack-plugin@5.3.16(webpack@5.105.0):
+  terser-webpack-plugin@5.3.16(webpack@5.105.1):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
       schema-utils: 4.3.3
       serialize-javascript: 6.0.2
       terser: 5.46.0
-      webpack: 5.105.0(webpack-cli@6.0.1)
+      webpack: 5.105.1(webpack-cli@6.0.1)
 
   terser@5.46.0:
     dependencies:
@@ -1377,12 +1377,12 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  vue-loader@17.4.2(vue@3.5.28)(webpack@5.105.0):
+  vue-loader@17.4.2(vue@3.5.28)(webpack@5.105.1):
     dependencies:
       chalk: 4.1.2
       hash-sum: 2.0.0
       watchpack: 2.4.2
-      webpack: 5.105.0(webpack-cli@6.0.1)
+      webpack: 5.105.1(webpack-cli@6.0.1)
     optionalDependencies:
       vue: 3.5.28
 
@@ -1409,12 +1409,12 @@ snapshots:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.11
 
-  webpack-cli@6.0.1(webpack@5.105.0):
+  webpack-cli@6.0.1(webpack@5.105.1):
     dependencies:
       '@discoveryjs/json-ext': 0.6.3
-      '@webpack-cli/configtest': 3.0.1(webpack-cli@6.0.1)(webpack@5.105.0)
-      '@webpack-cli/info': 3.0.1(webpack-cli@6.0.1)(webpack@5.105.0)
-      '@webpack-cli/serve': 3.0.1(webpack-cli@6.0.1)(webpack@5.105.0)
+      '@webpack-cli/configtest': 3.0.1(webpack-cli@6.0.1)(webpack@5.105.1)
+      '@webpack-cli/info': 3.0.1(webpack-cli@6.0.1)(webpack@5.105.1)
+      '@webpack-cli/serve': 3.0.1(webpack-cli@6.0.1)(webpack@5.105.1)
       colorette: 2.0.20
       commander: 12.1.0
       cross-spawn: 7.0.6
@@ -1423,7 +1423,7 @@ snapshots:
       import-local: 3.2.0
       interpret: 3.1.1
       rechoir: 0.8.0
-      webpack: 5.105.0(webpack-cli@6.0.1)
+      webpack: 5.105.1(webpack-cli@6.0.1)
       webpack-merge: 6.0.1
 
   webpack-merge@6.0.1:
@@ -1432,14 +1432,14 @@ snapshots:
       flat: 5.0.2
       wildcard: 2.0.1
 
-  webpack-remove-empty-scripts@1.1.1(webpack@5.105.0):
+  webpack-remove-empty-scripts@1.1.1(webpack@5.105.1):
     dependencies:
       ansis: 4.0.0-node10
-      webpack: 5.105.0(webpack-cli@6.0.1)
+      webpack: 5.105.1(webpack-cli@6.0.1)
 
   webpack-sources@3.3.3: {}
 
-  webpack@5.105.0(webpack-cli@6.0.1):
+  webpack@5.105.1(webpack-cli@6.0.1):
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.8
@@ -1463,11 +1463,11 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 4.3.3
       tapable: 2.3.0
-      terser-webpack-plugin: 5.3.16(webpack@5.105.0)
+      terser-webpack-plugin: 5.3.16(webpack@5.105.1)
       watchpack: 2.5.1
       webpack-sources: 3.3.3
     optionalDependencies:
-      webpack-cli: 6.0.1(webpack@5.105.0)
+      webpack-cli: 6.0.1(webpack@5.105.1)
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
