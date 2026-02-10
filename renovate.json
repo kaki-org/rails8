@@ -49,6 +49,13 @@
       },
       "automerge": true,
       "platformAutomerge": true
+    },
+    {
+      "matchPackageNames": ["node"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "separateMajorMinor": true,
+      "automerge": true,
+      "platformAutomerge": true
     }
   ]
 }
