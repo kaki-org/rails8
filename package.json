@@ -27,5 +27,5 @@
     "build": "webpack --config ./config/webpack/webpack.config.js"
   },
   "devDependencies": {},
-  "packageManager": "pnpm@10.29.1"
+  "packageManager": "pnpm@10.29.2"
 }
