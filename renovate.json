@@ -12,9 +12,6 @@
     "**/vendor/**",
     "**/bower_components/**"
   ],
-  "patch": {
-    "enabled": false
-  },
   "packageRules": [
     {
       "matchManagers": ["npm"],
@@ -26,16 +23,12 @@
     },
     {
       "matchUpdateTypes": ["minor", "patch"],
-      "patch": {
-        "enabled": true
-      },
       "automerge": true,
       "platformAutomerge": true
     },
     {
       "matchPackageNames": ["node"],
       "matchUpdateTypes": ["minor", "patch"],
-      "separateMajorMinor": true,
       "automerge": true,
       "platformAutomerge": true
     }
