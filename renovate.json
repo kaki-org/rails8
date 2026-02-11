@@ -1,59 +1,34 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    "schedule:weekly"
-  ],
+  "extends": ["config:recommended", "schedule:weekly"],
   "timezone": "Asia/Tokyo",
-  "schedule": [
-    "before 9am"
-  ],
+  "schedule": ["before 9am"],
   "automerge": false,
   "automergeStrategy": "merge-commit",
   "separateMajorMinor": false,
-  "labels": [
-    "dependencies"
-  ],
+  "labels": ["dependencies"],
   "ignorePaths": [
     "**/node_modules/**",
     "**/vendor/**",
     "**/bower_components/**"
   ],
-  "patch": {
-    "enabled": false
-  },
   "packageRules": [
     {
-      "matchManagers": [
-        "npm"
-      ],
-      "assignees": [
-        "kakikubo"
-      ]
+      "matchManagers": ["npm"],
+      "assignees": ["kakikubo"]
     },
     {
-      "matchManagers": [
-        "github-actions"
-      ],
-      "assignees": [
-        "kakikubo"
-      ]
+      "matchManagers": ["github-actions"],
+      "assignees": ["kakikubo"]
     },
     {
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "patch": {
-        "enabled": true
-      },
+      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "platformAutomerge": true
     },
     {
       "matchPackageNames": ["node"],
       "matchUpdateTypes": ["minor", "patch"],
-      "separateMajorMinor": true,
       "automerge": true,
       "platformAutomerge": true
     }
