@@ -203,7 +203,7 @@ GEM
     mime-types-data (3.2025.0924)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
-    minitest (5.26.2)
+    minitest (5.27.0)
     msgpack (1.8.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -221,9 +221,9 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.5)
-    nokogiri (1.19.0-arm64-darwin)
+    nokogiri (1.19.1-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.19.0-x86_64-linux-gnu)
+    nokogiri (1.19.1-x86_64-linux-gnu)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -273,7 +273,7 @@ GEM
     puma (7.2.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.2.4)
+    rack (3.2.5)
     rack-mini-profiler (4.0.1)
       rack (>= 1.2.0)
     rack-protection (4.2.1)
@@ -329,20 +329,20 @@ GEM
       erb
       psych (>= 4.0.0)
       tsort
-    redis-client (0.26.2)
+    redis-client (0.26.4)
       connection_pool
     regexp_parser (2.11.3)
     reline (0.6.3)
       io-console (~> 0.5)
-    rspec-core (3.13.5)
+    rspec-core (3.13.6)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-mocks (3.13.5)
+    rspec-mocks (3.13.7)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-rails (8.0.2)
+    rspec-rails (8.0.3)
       actionpack (>= 7.2)
       activesupport (>= 7.2)
       railties (>= 7.2)
@@ -350,7 +350,7 @@ GEM
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
-    rspec-support (3.13.4)
+    rspec-support (3.13.7)
     rubocop (1.84.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -392,10 +392,10 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    searchkick (6.0.3)
+    searchkick (6.1.0)
       activemodel (>= 7.2)
     securerandom (0.4.1)
-    sidekiq (8.1.0)
+    sidekiq (8.1.1)
       connection_pool (>= 3.0.0)
       json (>= 2.16.0)
       logger (>= 1.7.0)
@@ -494,7 +494,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sass-rails (>= 6)
-  searchkick (~> 6.0.0)
+  searchkick (~> 6.1.0)
   sidekiq
   simplecov
   simplecov-lcov
