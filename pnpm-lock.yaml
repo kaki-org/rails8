@@ -19,7 +19,7 @@ importers:
         version: 8.1.200
       '@rails/actiontext':
         specifier: ^8.0.0
-        version: 8.1.200(trix@2.1.16)
+        version: 8.1.200(trix@2.1.17)
       '@rails/activestorage':
         specifier: ^8.0.0
         version: 8.1.200
@@ -43,7 +43,7 @@ importers:
         version: 3.2.2
       trix:
         specifier: ^2.0.7
-        version: 2.1.16
+        version: 2.1.17
       turbolinks:
         specifier: ^5.2.0
         version: 5.2.0
@@ -358,8 +358,8 @@ packages:
   de-indent@1.0.2:
     resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
 
-  dompurify@3.3.1:
-    resolution: {integrity: sha512-qkdCKzLNtrgPFP1Vo+98FRzJnBRGe4ffyCea9IwHB1fyxPOeNTHpLKYGd4Uk9xvNoH0ZoOjwZxNptyMwqrId1Q==}
+  dompurify@3.3.3:
+    resolution: {integrity: sha512-Oj6pzI2+RqBfFG+qOaOLbFXLQ90ARpcGG6UePL82bJLtdsa6CYJD7nmiU8MW9nQNOtCHV3lZ/Bzq1X0QYbBZCA==}
 
   electron-to-chromium@1.5.307:
     resolution: {integrity: sha512-5z3uFKBWjiNR44nFcYdkcXjKMbg5KXNdciu7mhTPo9tB7NbqSNP2sSnGR+fqknZSCwKkBN+oxiiajWs4dT6ORg==}
@@ -678,8 +678,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  trix@2.1.16:
-    resolution: {integrity: sha512-XtZgWI+oBvLzX7CWnkIf+ZWC+chL+YG/TkY43iMTV0Zl+CJjn18B1GJUCEWJ8qgfpcyMBuysnNAfPWiv2sV14A==}
+  trix@2.1.17:
+    resolution: {integrity: sha512-nkHg7VgIItGVx1CFA645dDlAoCgah+9gv80Yc+97aS8jkZmO5K4MxkSqmU9t/C8upqZB8uhfJs90epoDfYz/6Q==}
     engines: {node: '>= 18'}
 
   turbolinks@5.2.0:
@@ -824,10 +824,10 @@ snapshots:
 
   '@rails/actioncable@8.1.200': {}
 
-  '@rails/actiontext@8.1.200(trix@2.1.16)':
+  '@rails/actiontext@8.1.200(trix@2.1.17)':
     dependencies:
       '@rails/activestorage': 8.1.200
-      trix: 2.1.16
+      trix: 2.1.17
 
   '@rails/activestorage@8.1.200':
     dependencies:
@@ -1088,7 +1088,7 @@ snapshots:
 
   de-indent@1.0.2: {}
 
-  dompurify@3.3.1:
+  dompurify@3.3.3:
     optionalDependencies:
       '@types/trusted-types': 2.0.7
 
@@ -1344,9 +1344,9 @@ snapshots:
       commander: 2.20.3
       source-map-support: 0.5.21
 
-  trix@2.1.16:
+  trix@2.1.17:
     dependencies:
-      dompurify: 3.3.1
+      dompurify: 3.3.3
 
   turbolinks@5.2.0: {}
 
