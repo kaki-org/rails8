@@ -58,10 +58,10 @@ importers:
         version: 2.7.16
       webpack:
         specifier: ^5.99.7
-        version: 5.105.4(webpack-cli@7.0.0)
+        version: 5.105.4(webpack-cli@7.0.2)
       webpack-cli:
         specifier: ^7.0.0
-        version: 7.0.0(webpack@5.105.4)
+        version: 7.0.2(webpack@5.105.4)
       webpack-remove-empty-scripts:
         specifier: ^1.0.1
         version: 1.1.1(webpack@5.105.4)
@@ -697,8 +697,8 @@ packages:
     resolution: {integrity: sha512-Zn5uXdcFNIA1+1Ei5McRd+iRzfhENPCe7LeABkJtNulSxjma+l7ltNx55BWZkRlwRnpOgHqxnjyaDgJnNXnqzg==}
     engines: {node: '>=10.13.0'}
 
-  webpack-cli@7.0.0:
-    resolution: {integrity: sha512-NbM62WodkUPXQGR/Ip3pSFsFUKJSseDIFr2H5Z1+4fHwB9X4cO10knPShIopFqAHZa8a5Q8pdtmtE6C12/mlMQ==}
+  webpack-cli@7.0.2:
+    resolution: {integrity: sha512-dB0R4T+C/8YuvM+fabdvil6QE44/ChDXikV5lOOkrUeCkW5hTJv2pGLE3keh+D5hjYw8icBaJkZzpFoaHV4T+g==}
     engines: {node: '>=20.9.0'}
     hasBin: true
     peerDependencies:
@@ -1177,7 +1177,7 @@ snapshots:
     dependencies:
       schema-utils: 4.3.3
       tapable: 2.3.0
-      webpack: 5.105.4(webpack-cli@7.0.0)
+      webpack: 5.105.4(webpack-cli@7.0.2)
 
   minimist@1.2.8: {}
 
@@ -1219,7 +1219,7 @@ snapshots:
     dependencies:
       loader-utils: 1.4.2
       lodash.defaults: 4.2.0
-      webpack: 5.105.4(webpack-cli@7.0.0)
+      webpack: 5.105.4(webpack-cli@7.0.2)
 
   rechoir@0.8.0:
     dependencies:
@@ -1290,7 +1290,7 @@ snapshots:
       jest-worker: 27.5.1
       schema-utils: 4.3.3
       terser: 5.46.0
-      webpack: 5.105.4(webpack-cli@7.0.0)
+      webpack: 5.105.4(webpack-cli@7.0.2)
 
   terser@5.46.0:
     dependencies:
@@ -1318,7 +1318,7 @@ snapshots:
       chalk: 4.1.2
       hash-sum: 2.0.0
       watchpack: 2.4.2
-      webpack: 5.105.4(webpack-cli@7.0.0)
+      webpack: 5.105.4(webpack-cli@7.0.2)
     optionalDependencies:
       vue: 3.5.30
 
@@ -1345,7 +1345,7 @@ snapshots:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.11
 
-  webpack-cli@7.0.0(webpack@5.105.4):
+  webpack-cli@7.0.2(webpack@5.105.4):
     dependencies:
       '@discoveryjs/json-ext': 1.0.0
       commander: 14.0.3
@@ -1355,7 +1355,7 @@ snapshots:
       import-local: 3.2.0
       interpret: 3.1.1
       rechoir: 0.8.0
-      webpack: 5.105.4(webpack-cli@7.0.0)
+      webpack: 5.105.4(webpack-cli@7.0.2)
       webpack-merge: 6.0.1
 
   webpack-merge@6.0.1:
@@ -1367,11 +1367,11 @@ snapshots:
   webpack-remove-empty-scripts@1.1.1(webpack@5.105.4):
     dependencies:
       ansis: 4.0.0-node10
-      webpack: 5.105.4(webpack-cli@7.0.0)
+      webpack: 5.105.4(webpack-cli@7.0.2)
 
   webpack-sources@3.3.4: {}
 
-  webpack@5.105.4(webpack-cli@7.0.0):
+  webpack@5.105.4(webpack-cli@7.0.2):
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.8
@@ -1399,7 +1399,7 @@ snapshots:
       watchpack: 2.5.1
       webpack-sources: 3.3.4
     optionalDependencies:
-      webpack-cli: 7.0.0(webpack@5.105.4)
+      webpack-cli: 7.0.2(webpack@5.105.4)
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
