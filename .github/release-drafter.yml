@@ -2,6 +2,10 @@ publish: true
 name-template: 'v$RESOLVED_VERSION 🌈'
 tag-template: 'v$RESOLVED_VERSION'
 
+exclude-labels:
+  - 'dependencies'
+  - 'chore'
+
 categories:
   - title: '🚀 Features'
     labels:
@@ -14,14 +18,10 @@ categories:
       - 'fix'
       - 'bugfix'
       - 'bug'
-  - title: '🧰 Maintenance'
-    label: 'chore'
   - title: '🔧 Refactoring'
     label: 'refactor'
   - title: '📖 Documentation'
     label: 'documentation'
-  - title: '⛓️ Dependency update'
-    label: 'dependencies'
 
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 
