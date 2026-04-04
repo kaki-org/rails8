@@ -4,18 +4,29 @@ on:
   push:
     branches:
       - main
+  # pull_request event is required only for autolabeler
   pull_request:
     types: [opened, reopened, synchronize]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
+  autolabeler:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter/autolabeler@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   update_release_draft:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: release-drafter/release-drafter@v7
         with:
-          commitish: main
-          # main への push (マージ) 時のみリリースを公開し、PR時は下書き更新のみにする
-          publish: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-
+          publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
