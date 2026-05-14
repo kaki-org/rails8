@@ -393,7 +393,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    searchkick (6.1.0)
+    searchkick (6.1.1)
       activemodel (>= 7.2)
     securerandom (0.4.1)
     sidekiq (8.1.5)
