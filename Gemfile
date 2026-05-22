@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '4.0.4'
+ruby '4.0.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 8.1.0'
@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.11'
 
 # Use Active Storage variant
 gem 'active_storage_validations', '~> 3.0.0'
-gem 'image_processing', '~> 1.12'
+gem 'image_processing', '~> 2.0'
 gem 'sidekiq'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
