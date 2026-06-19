@@ -2,6 +2,10 @@ publish: true
 name-template: 'v$RESOLVED_VERSION 🌈'
 tag-template: 'v$RESOLVED_VERSION'
 
+exclude-labels:
+  - 'dependencies'
+  - 'chore'
+
 categories:
   - title: '🚀 Features'
     labels:
