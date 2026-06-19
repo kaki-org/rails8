@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  if Rails.env.development? || Rails.env.test?
-    provider :github, '***REMOVED***', '***REMOVED***'
-  else
-    provider :github,
-             Rails.application.credentials.github[:client_id],
-             Rails.application.credentials.github[:client_secret]
-  end
+  provider :github,
+           ENV.fetch('GITHUB_CLIENT_ID'),
+           ENV.fetch('GITHUB_CLIENT_SECRET')
 end
