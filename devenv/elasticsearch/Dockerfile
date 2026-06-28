@@ -1,4 +1,3 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:9.3.3
-RUN elasticsearch-plugin install analysis-kuromoji
-RUN elasticsearch-plugin install analysis-icu
-
+FROM opensearchproject/opensearch:2.18.0
+RUN /usr/share/opensearch/bin/opensearch-plugin install --batch analysis-kuromoji
+RUN /usr/share/opensearch/bin/opensearch-plugin install --batch analysis-icu
