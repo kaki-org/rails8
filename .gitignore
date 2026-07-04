@@ -85,3 +85,6 @@ yarn-debug.log*
 !/app/assets/builds/.keep
 aws_credentials.txt
 .config/
+
+# ruby-lsp
+/.ruby-lsp/

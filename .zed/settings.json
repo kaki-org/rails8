@@ -1,0 +1,53 @@
+{
+  "languages": {
+    "Ruby": {
+      "language_servers": ["ruby-lsp", "!solargraph", "!rubocop"],
+      "formatter": {
+        "language_server": { "name": "ruby-lsp" }
+      },
+      "format_on_save": "on",
+      "tab_size": 2
+    }
+  },
+  "lsp": {
+    "ruby-lsp": {
+      "initialization_options": {
+        "enabledFeatures": {
+          "diagnostics": true,
+          "codeActions": true,
+          "documentSymbols": true,
+          "documentHighlights": true,
+          "foldingRanges": true,
+          "selectionRanges": true,
+          "semanticHighlighting": true,
+          "formatting": true,
+          "onTypeFormatting": true,
+          "hover": true,
+          "inlayHint": true,
+          "completion": true,
+          "definition": true,
+          "signatureHelp": true,
+          "typeHierarchy": true,
+          "codeLens": true
+        },
+        "featuresConfiguration": {
+          "inlayHint": {
+            "implicitRescue": true,
+            "implicitHashValue": true
+          }
+        },
+        "formatter": "rubocop_internal",
+        "linters": ["rubocop_internal"],
+        "addonSettings": {
+          "Ruby LSP Rails": {
+            "enablePendingMigrationsPrompt": false
+          }
+        }
+      }
+    }
+  },
+  "file_types": {
+    "Ruby": ["Gemfile", "Rakefile", "*.rake", "*.gemspec"],
+    "HAML": ["*.haml", "*.hamlit"]
+  }
+}
