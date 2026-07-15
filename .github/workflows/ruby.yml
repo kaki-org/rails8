@@ -61,7 +61,7 @@ jobs:
           ruby-version: .tool-versions
           bundler-cache: true
       - name: Use Node.js 22.19.0
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24.15.0
           package-manager-cache: false
@@ -96,7 +96,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
       - name: Setup node env 🧱
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: '.tool-versions'
           cache: 'pnpm'
