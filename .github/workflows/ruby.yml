@@ -13,8 +13,7 @@ jobs:
   rspec-job:
     #ubuntu環境で動かします
     runs-on: ubuntu-latest
-    # OpenSearch イメージ(約1.9GB)の pull + build がクリティカルパスに乗るため 7 -> 10 に緩和
-    timeout-minutes: 10
+    timeout-minutes: 7
     env:
       RAILS_ENV: test
       OPENSEARCH_URL: http://127.0.0.1:9200
