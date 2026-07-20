@@ -12,7 +12,9 @@ Ruby / Node.js は .tool-versions、pnpm は package.json の packageManager が
 
 ## 検索エンジン
 
-searchkick を使うが、接続先は Elasticsearch ではなく OpenSearch（config/initializers/searchkick.rb で OpenSearch::Client に差し替え済み）。環境変数名は歴史的経緯で ELASTIC_SEARCH_URL のまま。CI だけは Elasticsearch 7.17.9 で動くため、どちらか一方にしかない API は使わない。
+searchkick を使うが、接続先は Elasticsearch ではなく OpenSearch（config/initializers/searchkick.rb で OpenSearch::Client に差し替え済み）。接続先 URL の環境変数は OPENSEARCH_URL。旧名 ELASTIC_SEARCH_URL も互換用フォールバックとして読むが、新規に使わない。
+
+ローカル・CI とも devenv/opensearch/Dockerfile（opensearchproject/opensearch ベース + analysis-kuromoji / analysis-icu）から同一イメージをビルドして使う。Event モデルが searchkick language: 'japanese' を指定しており kuromoji 必須なので、プラグイン無しの素の公式イメージに差し替えると spec が落ちる。
 
 ## 開発・テスト実行の前提
 

@@ -16,8 +16,7 @@ jobs:
     timeout-minutes: 7
     env:
       RAILS_ENV: test
-      ELASTIC_SEARCH_URL: http://127.0.0.1:9200
-      # ELASTIC_SEARCH_URL: http://127.0.0.1:${{ job.services.elasticsearch.ports[9200] }}
+      OPENSEARCH_URL: http://127.0.0.1:9200
 
     services:
       mysql:
@@ -26,20 +25,9 @@ jobs:
           - 3306:3306
         env:
           MYSQL_ROOT_PASSWORD: root
-      # elasticsearch:
-      #   # image: elasticsearch:7.17.9
-      #   image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
-      #   ports:
-      #     - 9200:9200
-      #   env:
-      #     discovery.type: single-node
-      #   options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
-      #   options: >-
-      #     --health-cmd 'curl http://localhost:9200/_cluster/health'
-      #     --health-interval 10s
-      #     --health-timeout 5s
-      #     --health-retries 3
-      # 起動数が多すぎるせいか rspec が動かなくなるので一旦停止させたサービス
+      # OpenSearch は services: ではなく steps: 内で docker run する。
+      # searchkick language: 'japanese' が analysis-kuromoji を要求するため、
+      # ローカル開発と同じ devenv/opensearch/Dockerfile をビルドして使う。
 
     # https://github.com/ruby/setup-ruby
     steps:
@@ -65,27 +53,47 @@ jobs:
         with:
           node-version: 24.15.0
           package-manager-cache: false
-      # elasticsearch起動用に必要
+      # OpenSearch起動用に必要
       - name: Configure sysctl limits
         run: |
           sudo swapoff -a
           sudo sysctl -w vm.swappiness=1
           sudo sysctl -w fs.file-max=262144
           sudo sysctl -w vm.max_map_count=262144
-      - name: Run Elasticsearch
-        uses: elastic/elastic-github-actions/elasticsearch@master
-        with:
-          stack-version: 7.17.9
-          security-enabled: 'false'
-          plugins: 'analysis-kuromoji analysis-icu'
+      - name: Run OpenSearch
+        run: |
+          docker build -t rails8-opensearch -f devenv/opensearch/Dockerfile .
+          docker run -d --name opensearch -p 9200:9200 \
+            -e discovery.type=single-node \
+            -e DISABLE_SECURITY_PLUGIN=true \
+            -e DISABLE_INSTALL_DEMO_CONFIG=true \
+            -e OPENSEARCH_JAVA_OPTS='-Xms512m -Xmx512m' \
+            --ulimit memlock=-1:-1 \
+            rails8-opensearch
       #MySQLをインストール
       - name: Install dependent libralies
         run: sudo apt-get update -y && sudo apt-get install libmysqlclient-dev
-      - name: Verify Elasticsearch connection from host
+      - name: Verify OpenSearch connection from host
         run: |
-          echo "${ELASTIC_SEARCH_URL}"
-          curl -fsSL "${ELASTIC_SEARCH_URL}/_cat/health?h=status"
-      #     curl -X GET "$ELASTIC_SEARCH_URL/_nodes/plugins?pretty"
+          echo "${OPENSEARCH_URL}"
+          for i in $(seq 1 30); do
+            if curl -fsSL "${OPENSEARCH_URL}/_cat/health?h=status"; then
+              exit 0
+            fi
+            echo "waiting for OpenSearch... (${i}/30)"
+            sleep 5
+          done
+          echo "OpenSearch did not become available"
+          docker logs opensearch
+          exit 1
+      # searchkick language: 'japanese' が kuromoji を要求するため、
+      # 存在しなければここで落として原因を特定しやすくする
+      - name: Verify OpenSearch plugins
+        run: |
+          plugins=$(curl -fsSL "${OPENSEARCH_URL}/_cat/plugins?h=component" | sort)
+          echo "${plugins}"
+          echo "${plugins}" | grep -q analysis-kuromoji
+          echo "${plugins}" | grep -q analysis-icu
       - name: Setup bundler
         run: gem install bundler
 
