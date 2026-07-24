@@ -71,8 +71,8 @@ jobs:
             --ulimit memlock=-1:-1 \
             rails8-opensearch
       #MySQLをインストール
-      - name: Install dependent libralies
-        run: sudo apt-get update -y && sudo apt-get install libmysqlclient-dev
+      - name: Install dependent libraries
+        run: sudo apt-get update -y && sudo apt-get install -y libmysqlclient-dev
       - name: Verify OpenSearch connection from host
         run: |
           echo "${OPENSEARCH_URL}"
