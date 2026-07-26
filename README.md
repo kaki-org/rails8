@@ -74,7 +74,7 @@ Rails 8 を使用したイベント管理・参加申込みシステムです。
 ### 前提条件
 
 - Docker & Docker Compose
-- MySQL クライアントライブラリ 8.0 (Docker を使わずローカルで動かす場合のみ。mysql2 gem のビルドに必要。DB サーバ本体は docker-compose の MySQL 9.7 を使う)
+- MySQL クライアントライブラリ 8.0 (アプリをホスト上で実行する場合に必要。mysql2 gem のビルドに使用し、DB サーバは docker-compose の MySQL 9.7 を利用)
 
 ### 初期構築
 
