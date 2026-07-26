@@ -8,12 +8,15 @@
 - **主要機能**: イベント作成・編集・削除、画像アップロード (Active Storage)、イベント検索 (Searchkick/OpenSearch)、参加登録 (Tickets)。
 
 ## 2. 技術スタック & 開発環境
-- **Runtime**: Ruby 4.0.1, Node.js 24.14.0, pnpm 10.28.2
+
+バージョンの正は各出典ファイル（Ruby / Node.js は `.tool-versions`、Rails は `Gemfile`、pnpm / Bootstrap は `package.json`、MySQL は `docker-compose.yml`、OpenSearch は `devenv/opensearch/Dockerfile`）。以下と食い違う場合は出典側が正。
+
+- **Runtime**: Ruby 4.0.3, Node.js 24.15.0, pnpm 10.33.2
 - **Framework**: Rails 8.1.0
-- **Database**: MySQL 8.0/9.6
+- **Database**: MySQL 9.7
 - **Search**: OpenSearch 2.18.0 + Searchkick (opensearch-ruby)
 - **Background Jobs**: Sidekiq
-- **Frontend**: Bootstrap 5.3.7, Hamlit (Template), Stimulus, Turbo, Webpack 5
+- **Frontend**: Bootstrap 5.3.8, Hamlit (Template), Stimulus, Turbo, Webpack 5
 - **Testing**: RSpec, Capybara (Playwright), SimpleCov
 - **Linting**: RuboCop (rubocop-rails, rubocop-performance)
 
