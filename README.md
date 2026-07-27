@@ -29,9 +29,9 @@ Rails 8 を使用したイベント管理・参加申込みシステムです。
 
 ### バックエンド
 
-- **Ruby**: 3.4.5
-- **Rails**: 8.0.0
-- **データベース**: MySQL 8.0
+- **Ruby**: 4.0.3
+- **Rails**: 8.1.0
+- **データベース**: MySQL 9.7
 - **認証**: OmniAuth (GitHub)
 - **検索**: Searchkick + OpenSearch
 - **バックグラウンドジョブ**: Sidekiq
@@ -41,7 +41,7 @@ Rails 8 を使用したイベント管理・参加申込みシステムです。
 ### フロントエンド
 
 - **JavaScript**: Stimulus Rails, Turbo Rails
-- **CSS**: Bootstrap 5.3.7, SCSS
+- **CSS**: Bootstrap 5.3.8, SCSS
 - **バンドラー**: Webpack
 - **その他**: jQuery, Vue.js 3
 
@@ -74,7 +74,7 @@ Rails 8 を使用したイベント管理・参加申込みシステムです。
 ### 前提条件
 
 - Docker & Docker Compose
-- MySQL 8.0 (ローカル開発の場合)
+- MySQL クライアントライブラリ 8.0 (アプリをホスト上で実行する場合に必要。mysql2 gem のビルドに使用し、DB サーバは docker-compose の MySQL 9.7 を利用)
 
 ### 初期構築
 
