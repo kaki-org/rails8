@@ -146,7 +146,7 @@ GEM
     hashie (5.0.0)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
-    image_processing (2.0.3)
+    image_processing (2.1.0)
     importmap-rails (2.2.3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -475,7 +475,7 @@ DEPENDENCIES
   capybara-playwright-driver
   factory_bot_rails
   hamlit-rails (~> 0.2.3)
-  image_processing (~> 2.0)
+  image_processing (~> 2.1)
   importmap-rails
   jbuilder (~> 2.15)
   jsbundling-rails
