@@ -479,6 +479,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder (~> 2.15)
   jsbundling-rails
+  json (< 3)
   kaminari (~> 1.2.2)
   listen (~> 3.8)
   mysql2 (~> 0.5)
