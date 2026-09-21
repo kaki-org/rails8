@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.15'
 # Use Active Storage variant
 gem 'active_storage_validations', '~> 4.1.0'
 gem 'image_processing', '~> 2.1'
+gem 'ruby-vips', '~> 2.2'
 gem 'sidekiq'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -91,3 +92,6 @@ gem 'tzinfo-data', platforms: %i[windows mswin jruby]
 gem "benchmark", "~> 0.5.0"
 
 gem "ostruct", "~> 0.6.3"
+
+# Rails 8.1 の ActiveSupport::JSON.decode は json 3 のキーワード引数専用 API に未対応
+gem 'json', '< 3'
