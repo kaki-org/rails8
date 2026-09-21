@@ -92,3 +92,6 @@ gem 'tzinfo-data', platforms: %i[windows mswin jruby]
 gem "benchmark", "~> 0.5.0"
 
 gem "ostruct", "~> 0.6.3"
+
+# Rails 8.1 の ActiveSupport::JSON.decode は json 3 のキーワード引数専用 API に未対応
+gem 'json', '< 3'
