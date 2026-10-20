@@ -29,7 +29,7 @@ gem 'sidekiq'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'hamlit-rails', '~> 0.2.3'
-gem 'kaminari', '~> 1.2.2'
+gem 'kaminari', '~> 1.3.0'
 gem 'omniauth', '~> 2.1.1'
 gem 'omniauth-github', '~> 2.0.1'
 gem 'omniauth-rails_csrf_protection', '~> 2.0.0'
