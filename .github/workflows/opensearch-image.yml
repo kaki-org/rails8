@@ -41,15 +41,18 @@ jobs:
       - name: Build and push
         env:
           FORCE_REBUILD: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+          # provenance attestation 付きの manifest list は GITHUB_TOKEN での GHCR push が denied になる
+          BUILDX_NO_DEFAULT_ATTESTATIONS: "1"
         run: |
           tag=$(sha256sum devenv/opensearch/Dockerfile | awk '{print substr($1,1,12)}')
-          image="ghcr.io/${GITHUB_REPOSITORY,,}/rails8-opensearch:${tag}"
+          image="ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/rails8-opensearch:${tag}"
           echo "image=${image}"
           if [ "${FORCE_REBUILD}" != "true" ] && docker buildx imagetools inspect "${image}" >/dev/null 2>&1; then
             echo "already published: ${image}"
             exit 0
           fi
           docker build \
+            --provenance=false \
             --label org.opencontainers.image.source="https://github.com/${GITHUB_REPOSITORY}" \
             --label org.opencontainers.image.description="OpenSearch with analysis-kuromoji and analysis-icu" \
             -t "${image}" \
