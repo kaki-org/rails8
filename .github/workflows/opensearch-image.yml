@@ -1,0 +1,66 @@
+name: opensearch-image
+
+# devenv/opensearch/Dockerfile を GHCR に載せる。Build は同じタグを pull し、
+# PR ごとに docker build しない。タグは Dockerfile の sha256 先頭 12 文字で、
+# ruby.yml の Run OpenSearch と一致させる。
+on:
+  pull_request:
+    paths:
+      - devenv/opensearch/**
+      - .github/workflows/opensearch-image.yml
+  push:
+    branches: [main]
+    paths:
+      - devenv/opensearch/**
+      - .github/workflows/opensearch-image.yml
+  # Dockerfile の FROM タグが同じ名前のまま更新されても追従する
+  schedule:
+    - cron: '0 18 * * 0' # 月曜 03:00 JST
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  push-image:
+    # Dependabot の GITHUB_TOKEN は packages へ push できない。マージ後の main push で載せる。
+    if: github.actor != 'dependabot[bot]' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - name: Login to GHCR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "${GH_TOKEN}" | docker login ghcr.io -u "${GITHUB_ACTOR}" --password-stdin
+      - name: Build and push
+        env:
+          FORCE_REBUILD: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+        run: |
+          tag=$(sha256sum devenv/opensearch/Dockerfile | awk '{print substr($1,1,12)}')
+          image="ghcr.io/${GITHUB_REPOSITORY,,}/rails8-opensearch:${tag}"
+          echo "image=${image}"
+          if [ "${FORCE_REBUILD}" != "true" ] && docker buildx imagetools inspect "${image}" >/dev/null 2>&1; then
+            echo "already published: ${image}"
+            exit 0
+          fi
+          docker build \
+            --label org.opencontainers.image.source="https://github.com/${GITHUB_REPOSITORY}" \
+            --label org.opencontainers.image.description="OpenSearch with analysis-kuromoji and analysis-icu" \
+            -t "${image}" \
+            devenv/opensearch
+          docker push "${image}"
+      - name: Make package public
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api --method PATCH \
+            -H "Accept: application/vnd.github+json" \
+            "/orgs/${GITHUB_REPOSITORY%%/*}/packages/container/rails8-opensearch" \
+            -f visibility=public

@@ -1,0 +1,46 @@
+name: cache-warmup
+
+# PR の Build は pull_request でしか起動しない。その実行で保存したキャッシュは
+# refs/pull/N/merge に閉じ、他の PR から読めない。main のスコープに bundler / pnpm
+# キャッシュを作り、main 向けの全 PR から復元できるようにする。
+# キーは ruby.yml と同じアクションに揃える（手書きの key にしない）。
+# setup-ruby は Gemfile.lock が違うときも restore-keys で部分復元し、
+# 変わっていない native extension は再ビルドしない。
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  bundler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .tool-versions
+          bundler-cache: true
+
+  node:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6.1.0
+      - name: Setup node env
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: '.tool-versions'
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
