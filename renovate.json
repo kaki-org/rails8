@@ -18,8 +18,9 @@
       "assignees": ["kakikubo"]
     },
     {
+      "description": "GitHub Actions は Dependabot で更新する",
       "matchManagers": ["github-actions"],
-      "assignees": ["kakikubo"]
+      "enabled": false
     },
     {
       "matchUpdateTypes": ["minor", "patch"],
