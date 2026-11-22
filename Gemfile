@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '4.0.9'
+ruby '4.0.10'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 8.1.4'
@@ -30,7 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'hamlit-rails', '~> 0.2.3'
 gem 'kaminari', '~> 1.3.0'
-gem 'omniauth', '~> 2.3.0'
+gem 'omniauth', '~> 2.4.0'
 gem 'omniauth-github', '~> 2.0.1'
 gem 'omniauth-rails_csrf_protection', '~> 2.0.0'
 gem 'opensearch-ruby' # select one

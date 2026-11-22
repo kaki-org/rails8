@@ -8,8 +8,8 @@
     "@rails/actiontext": "^8.0.0",
     "@rails/activestorage": "^8.0.0",
     "@rails/ujs": "^7.1.1",
-    "bootstrap": "5.3.8",
-    "jquery": "4.0.0",
+    "bootstrap": "5.3.9",
+    "jquery": "4.1.0",
     "mini-css-extract-plugin": "^2.7.3",
     "rails-erb-loader": "^5.5.2",
     "stimulus": "^3.2.1",
@@ -27,5 +27,5 @@
     "build": "webpack --config ./config/webpack/webpack.config.js"
   },
   "devDependencies": {},
-  "packageManager": "pnpm@12.16.1"
+  "packageManager": "pnpm@12.21.0"
 }
